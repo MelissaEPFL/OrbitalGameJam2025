@@ -7,6 +7,7 @@ const LEFT_ARROW = "←"
 var label_content : String = ""
 
 var is_success : bool = false
+var is_failure : bool = false
 var to_be_wiped: bool = false
 
 @onready var label: Label = $Label
@@ -28,10 +29,12 @@ func treatSignal(signal_value: String) -> void:
 	if to_be_wiped:
 		label_content = ""
 		to_be_wiped = false
+		is_failure = false
 	
 	if signal_value == "RESET":
 		is_success = false
 		label_content = ""
+		is_failure = false
 	elif signal_value == "UP":
 		is_success = false
 		label_content += UP_ARROW
@@ -48,10 +51,16 @@ func treatSignal(signal_value: String) -> void:
 		#label_content = ""
 		is_success = true
 		to_be_wiped = true
+	elif signal_value == "FAILURE":
+		#label_content = ""
+		is_failure = true
+		to_be_wiped = true
 		
 	
 	if is_success:
 		change_label_color(Color.GREEN)
+	elif is_failure:
+		change_label_color(Color.RED)
 	else:
 		change_label_color(Color.WHITE)
 

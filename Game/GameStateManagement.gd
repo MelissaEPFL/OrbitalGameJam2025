@@ -46,6 +46,8 @@ class Target:
 	func validate_ingredients(in_pot: Array[IngredientIncantation]) -> bool:
 		return recipe.validate_ingredients(in_pot)
 
+const MAX_INCANTATION_SIZE : int = 5 # Maximum length of the incantation, to reset if it gets too large
+
 # The current selection of inputs from the player (right, up , down down down)
 var current_incantation : Array[IncantationInputs] = [] 
 
@@ -55,12 +57,21 @@ var ingredients_in_pot: Array[IngredientIncantation] = [] # The recipes in the p
 
 func receiveInput(receivedInput : IncantationInputs):
 	current_incantation.append(receivedInput)
+	
+	var success_in_pattern: bool = false
 	for i in range(available_incantations.size()):
 		if available_incantations[i].validate_incantation(current_incantation):
 			ingredients_in_pot.append(available_incantations[i])
 			current_incantation = []
 			incantationCharacterStream.emit("SUCCESS")
-			
+			success_in_pattern = true
+	
+	print("CONDITIONS !!")
+	print(str(current_incantation.size()))
+	print(success_in_pattern)
+	if current_incantation.size() >= MAX_INCANTATION_SIZE and !success_in_pattern:
+		incantationCharacterStream.emit("FAILURE")
+		current_incantation = []
 
 func deleteInputs():
 	if current_incantation.size() == 0:

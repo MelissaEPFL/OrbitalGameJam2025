@@ -8,13 +8,9 @@ enum State {
 
 var current_state = State.IDLE
 
-@onready var chaudron:Node2D = $Chaudron
-
 func _ready():
 	
 	current_state = State.IDLE
-	chaudron.connect("chaudron_moving", _conveyor_on_off())
-	chaudron.connect("chaudron_arrived", _conveyor_on_off())
 	
 func _process(delta):
 	match current_state:

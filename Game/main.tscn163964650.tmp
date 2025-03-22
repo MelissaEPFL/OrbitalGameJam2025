@@ -212,7 +212,3 @@ scale = Vector2(0.788961, 1)
 sprite_frames = SubResource("SpriteFrames_n5ude")
 animation = &"idle"
 script = ExtResource("6_dg77c")
-
-[connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Chaudron" method="_on_recipe_change"]
-[connection signal="chaudron_arrived" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]
-[connection signal="chaudron_moving" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]

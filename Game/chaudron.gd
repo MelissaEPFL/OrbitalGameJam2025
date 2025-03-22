@@ -18,14 +18,10 @@ enum State {
 }
 var current_state = State.IDLE
 
-# child AnimatedSprite2D
-@onready var sprite_chaudron = $Groupe_chaudrons
-@onready var gameManager = $GameManager
-
 func _ready():
+	print(get_node("../GameManager"))
 	# Initial position of the sprite
 	position = left_position
-	gameManager.connect("successfulMissileLaunch", _on_recipe_change())
 
 func _process(delta):
 	match current_state:

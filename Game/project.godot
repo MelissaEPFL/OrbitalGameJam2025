@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="OrbitalGameJam2025"
-run/main_scene="uid://b4sy00ot8bfvn"
+run/main_scene="uid://dupgtndhtv0uw"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx0pg141lqpqk"]
+
+[ext_resource type="Script" uid="uid://7or2mr2o7so2" path="res://recipe_panel.gd" id="1_6ogsb"]
+[ext_resource type="Texture2D" uid="uid://b4ea6lyafp553" path="res://icon.svg" id="1_cbd0w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c5qjd"]
+font_size = 29
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[node name="RecipePanel" type="Panel"]
+custom_minimum_size = Vector2(232, 88)
+anchors_preset = -1
+anchor_right = 0.201
+anchor_bottom = 0.136
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.448
+offset_bottom = 0.871994
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6ogsb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(185, 43)
+scale = Vector2(0.570312, 0.546875)
+texture = ExtResource("1_cbd0w")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -90.0
+offset_bottom = -1.0
+text = "↑↓→←"
+label_settings = SubResource("LabelSettings_c5qjd")
+horizontal_alignment = 1
+vertical_alignment = 1

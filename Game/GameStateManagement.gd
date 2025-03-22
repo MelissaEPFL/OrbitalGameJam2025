@@ -162,6 +162,7 @@ func _input(event: InputEvent) -> void:
 			deleteInputs()
 		if event.keycode == KEY_ENTER:
 			user_pressed_enter_on_current_pot()
+			incantationCharacterStream.emit("RESET")
 		print("-----------")
 		print(current_incantation)
 		print(ingredients_in_pot)

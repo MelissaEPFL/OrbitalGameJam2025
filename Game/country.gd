@@ -23,6 +23,7 @@ var country_health = initial_health
 @onready var _animation_explosion = $VBoxContainer/upper/Explosion
 @onready var _animation_flag = $VBoxContainer/upper/FlagContainer/Flag
 @onready var _animation_city = $VBoxContainer/upper/CityContainer/City
+const CITY_FRAMES = 3
 
 func _ready():
 	_animation_healthbar.frame = 0
@@ -41,13 +42,12 @@ func _process(delta):
 		_animation_healthbar.frame = round(country_health/health_step)
 		print('update country health!')
 		
-		# update city sprite
-		if country_health > (maximum_country_health / 3) * 2:
-			_animation_city.frame = 2
-		elif country_health > maximum_country_health / 3:
-			_animation_city.frame = 1
-		else:
-			_animation_city.frame = 0
+		# update city sprite depending on health and 3 frames of city health
+		# frame 0: damaged
+		# frame 1: building
+		# frame 2: ok
+		# change 3
+		_animation_city.frame = roundi(fmod(country_health, maximum_country_health) / (maximum_country_health / CITY_FRAMES))
 		#print(_animation_city.frame, '||||',country_health, '||||', maximum_country_health, '|||', maximum_country_health / 3 * 2)
 	
 	#print(_animation_city.frame)

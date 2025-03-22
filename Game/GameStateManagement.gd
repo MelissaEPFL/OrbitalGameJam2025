@@ -7,7 +7,7 @@ signal failedMissileLaunch
 signal successfulMissileLaunch
 
 
-signal incantationCharacterStream
+signal incantationCharacterStream(char: String)
 
 class IngredientIncantation:
 	var ingredientName: String
@@ -118,6 +118,8 @@ func user_pressed_enter_on_current_pot():
 	else:
 		failedMissileLaunch.emit()
 		print("You failed, nul !")
+	deleteInputs()
+	deleteInputs()
 
 func assign_target(new_target : int) -> bool:
 	print("Pressed " + str(new_target))
@@ -133,16 +135,20 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
 		if event.keycode == KEY_W or event.keycode == KEY_UP:
 			receiveInput(IncantationInputs.UP)
+			incantationCharacterStream.emit("UP")
 		if event.keycode == KEY_A or event.keycode == KEY_LEFT:
 			receiveInput(IncantationInputs.LEFT)
+			incantationCharacterStream.emit("LEFT")
 		if event.keycode == KEY_S or event.keycode == KEY_DOWN:
 			receiveInput(IncantationInputs.DOWN)
+			incantationCharacterStream.emit("DOWN")
 		if event.keycode == KEY_D or event.keycode == KEY_RIGHT:
 			receiveInput(IncantationInputs.RIGHT)
+			incantationCharacterStream.emit("RIGHT")
 		if event.keycode == KEY_ESCAPE:
 			deleteInputs()
+			incantationCharacterStream.emit("RESET")
 		if event.keycode == KEY_ENTER:
-			print("Pressed enter !")
 			user_pressed_enter_on_current_pot()
 		print("-----------")
 		print(current_incantation)

@@ -19,7 +19,7 @@ enum State {
 var current_state = State.IDLE
 
 func _ready():
-	print(get_node("../GameManager"))
+	#print(get_node("../GameManager"))
 	# Initial position of the sprite
 	position = left_position
 

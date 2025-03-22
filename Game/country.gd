@@ -48,9 +48,9 @@ func _process(delta):
 			_animation_city.frame = 1
 		else:
 			_animation_city.frame = 0
-		print(_animation_city.frame, '||||',country_health, '||||', maximum_country_health, '|||', maximum_country_health / 3 * 2)
+		#print(_animation_city.frame, '||||',country_health, '||||', maximum_country_health, '|||', maximum_country_health / 3 * 2)
 	
-	print(_animation_city.frame)
+	#print(_animation_city.frame)
 	
 	# stop attack animation after a while
 	#print(round(time_country), '|||||',city_last_attack + attack_animation_duration)

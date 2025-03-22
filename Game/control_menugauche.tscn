@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://l7uh2auesjry"]
+[gd_scene load_steps=3 format=3 uid="uid://l7uh2auesjry"]
 
+[ext_resource type="Script" uid="uid://tx5g7udmhd68" path="res://control_menugauche.gd" id="1_l6hst"]
 [ext_resource type="PackedScene" uid="uid://dx0pg141lqpqk" path="res://recipePanel.tscn" id="1_usis7"]
 
 [node name="ControlMenugauche" type="Control"]
@@ -10,8 +11,9 @@ anchor_bottom = 1.0
 offset_right = -741.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_l6hst")
 
-[node name="RecipePanel" parent="." instance=ExtResource("1_usis7")]
+[node name="RecipePanel1" parent="." instance=ExtResource("1_usis7")]
 layout_mode = 1
 anchor_right = 0.567
 anchor_bottom = 0.137

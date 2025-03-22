@@ -1,11 +1,90 @@
-[gd_scene load_steps=24 format=3 uid="uid://b4sy00ot8bfvn"]
+[gd_scene load_steps=36 format=3 uid="uid://b4sy00ot8bfvn"]
 
 [ext_resource type="Texture2D" uid="uid://bjaia504ofiw5" path="res://assets/ingredient_01.jpeg" id="1_1yy88"]
 [ext_resource type="Texture2D" uid="uid://lxljw6ivm4ao" path="res://assets/flag.png" id="1_6le3f"]
 [ext_resource type="Script" uid="uid://2ot031kd13ag" path="res://country.gd" id="1_rk51i"]
 [ext_resource type="Texture2D" uid="uid://dd3kgg8no32mt" path="res://assets/city.png" id="2_2w0xq"]
+[ext_resource type="Texture2D" uid="uid://cebruahwu2tjh" path="res://assets/flag_sprites.png" id="3_05fxv"]
 [ext_resource type="Texture2D" uid="uid://dkcmxnxogcg3y" path="res://assets/healthbar_sprites.png" id="3_wvw0n"]
 [ext_resource type="Texture2D" uid="uid://dsd0yjumvmq00" path="res://assets/city_explosion.jpg" id="4_nsy2n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc2pf"]
+atlas = ExtResource("3_05fxv")
+region = Rect2(0, 0, 202, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2i0h"]
+atlas = ExtResource("3_05fxv")
+region = Rect2(202, 0, 202, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qge85"]
+atlas = ExtResource("3_05fxv")
+region = Rect2(404, 0, 202, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xyou"]
+atlas = ExtResource("3_05fxv")
+region = Rect2(606, 0, 202, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iln63"]
+atlas = ExtResource("3_05fxv")
+region = Rect2(808, 0, 202, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdcqv"]
+atlas = ExtResource("3_05fxv")
+region = Rect2(1010, 0, 202, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6l21"]
+atlas = ExtResource("3_05fxv")
+region = Rect2(1212, 0, 202, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cww2c"]
+atlas = ExtResource("3_05fxv")
+region = Rect2(1414, 0, 202, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um3sa"]
+atlas = ExtResource("3_05fxv")
+region = Rect2(1616, 0, 202, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cs5r"]
+atlas = ExtResource("3_05fxv")
+region = Rect2(1818, 0, 202, 324)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6hicr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc2pf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2i0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qge85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xyou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iln63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdcqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6l21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cww2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um3sa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cs5r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dpgnl"]
 atlas = ExtResource("4_nsy2n")
@@ -138,9 +217,13 @@ offset_bottom = 40.0
 [node name="upper" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="flag" type="TextureRect" parent="VBoxContainer/upper"]
+[node name="FlagContainer" type="TextureRect" parent="VBoxContainer/upper"]
 layout_mode = 2
 texture = ExtResource("1_6le3f")
+
+[node name="Flag" type="AnimatedSprite2D" parent="VBoxContainer/upper/FlagContainer"]
+position = Vector2(182, 192)
+sprite_frames = SubResource("SpriteFrames_6hicr")
 
 [node name="CityContainer" type="TextureRect" parent="VBoxContainer/upper"]
 layout_mode = 2

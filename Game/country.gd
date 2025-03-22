@@ -20,10 +20,13 @@ var country_health = initial_health
 
 @onready var _animation_healthbar = $VBoxContainer/upper/HealthbarContainer/Healthbar
 @onready var _animation_city = $VBoxContainer/upper/CityContainer/City
+@onready var _animation_flag = $VBoxContainer/upper/FlagContainer/Flag
+
 
 func _ready():
 	_animation_healthbar.frame = 1
 	_animation_city.visible = false
+	_animation_flag.play()
 
 func _process(delta):
 	time_country = time_country + delta

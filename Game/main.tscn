@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://dupgtndhtv0uw"]
+[gd_scene load_steps=28 format=3 uid="uid://dupgtndhtv0uw"]
 
 [ext_resource type="Script" uid="uid://c3ysm3n3etekc" path="res://GameStateManagement.gd" id="1_272bh"]
 [ext_resource type="Texture2D" uid="uid://d4fp16xf8tfwv" path="res://assets/nuclear_plant_control_pannel.jpg" id="2_5vw27"]
+[ext_resource type="PackedScene" uid="uid://bod83u0fm70f6" path="res://control_menugauche.tscn" id="3_4c57u"]
 [ext_resource type="PackedScene" uid="uid://b4sy00ot8bfvn" path="res://country.tscn" id="3_5vw27"]
 [ext_resource type="Texture2D" uid="uid://mafoh57dq207" path="res://assets/Perso-Gome-Jum.png" id="3_kek77"]
 [ext_resource type="Script" uid="uid://bt3h3pymd07gw" path="res://martin.gd" id="4_4c57u"]
@@ -181,11 +182,22 @@ scale = Vector2(0.321635, 0.321635)
 texture = ExtResource("2_5vw27")
 
 [node name="Menu gauche" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.694118)
+z_index = 1
 layout_mode = 0
 offset_right = 340.0
 offset_bottom = 648.0
 
+[node name="ControlMenugauche" parent="Menu gauche" instance=ExtResource("3_4c57u")]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 15.0
+offset_right = -324.0
+offset_bottom = 15.0
+scale = Vector2(1.31341, 1.0235)
+
 [node name="Menu droite" type="Panel" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = 810.0
 offset_top = -3.05176e-05
@@ -214,16 +226,11 @@ animation = &"failure"
 script = ExtResource("4_4c57u")
 
 [node name="Chaudron" parent="Menu central" instance=ExtResource("7_ycdy4")]
+z_index = 1
 position = Vector2(-72.115, 73)
 
-[node name="ConveyorBelt" type="AnimatedSprite2D" parent="Menu central"]
-position = Vector2(225, 599)
-scale = Vector2(0.788961, 1)
-sprite_frames = SubResource("SpriteFrames_n5ude")
-animation = &"idle"
-script = ExtResource("6_dg77c")
-
 [node name="IncantationPanel" parent="Menu central" instance=ExtResource("8_5vw27")]
+z_index = 1
 layout_mode = 1
 offset_left = 117.0
 offset_top = 486.0
@@ -232,9 +239,15 @@ offset_bottom = 485.872
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="ConveyorBelt" type="AnimatedSprite2D" parent="Menu central"]
+position = Vector2(225.5, 599)
+scale = Vector2(1.875, 1)
+sprite_frames = SubResource("SpriteFrames_n5ude")
+animation = &"idle"
+script = ExtResource("6_dg77c")
+
 [connection signal="failedMissileLaunch" from="GameManager" to="Menu central/Martin" method="_on_failure"]
 [connection signal="incantationCharacterStream" from="GameManager" to="Menu central/IncantationPanel" method="treatSignal"]
-[connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Martin" method="_on_success"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Chaudron" method="_on_recipe_change"]
 [connection signal="chaudron_arrived" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]
 [connection signal="chaudron_moving" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]

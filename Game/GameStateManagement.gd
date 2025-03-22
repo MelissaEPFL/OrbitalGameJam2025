@@ -59,6 +59,7 @@ func receiveInput(receivedInput : IncantationInputs):
 		if available_incantations[i].validate_incantation(current_incantation):
 			ingredients_in_pot.append(available_incantations[i])
 			current_incantation = []
+			incantationCharacterStream.emit("SUCCESS")
 			
 
 func deleteInputs():
@@ -134,20 +135,20 @@ func assign_target(new_target : int) -> bool:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
 		if event.keycode == KEY_W or event.keycode == KEY_UP:
-			receiveInput(IncantationInputs.UP)
 			incantationCharacterStream.emit("UP")
+			receiveInput(IncantationInputs.UP)
 		if event.keycode == KEY_A or event.keycode == KEY_LEFT:
-			receiveInput(IncantationInputs.LEFT)
 			incantationCharacterStream.emit("LEFT")
+			receiveInput(IncantationInputs.LEFT)
 		if event.keycode == KEY_S or event.keycode == KEY_DOWN:
-			receiveInput(IncantationInputs.DOWN)
 			incantationCharacterStream.emit("DOWN")
+			receiveInput(IncantationInputs.DOWN)
 		if event.keycode == KEY_D or event.keycode == KEY_RIGHT:
-			receiveInput(IncantationInputs.RIGHT)
 			incantationCharacterStream.emit("RIGHT")
+			receiveInput(IncantationInputs.RIGHT)
 		if event.keycode == KEY_ESCAPE:
-			deleteInputs()
 			incantationCharacterStream.emit("RESET")
+			deleteInputs()
 		if event.keycode == KEY_ENTER:
 			user_pressed_enter_on_current_pot()
 		print("-----------")

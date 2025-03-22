@@ -19,17 +19,17 @@ var debug_play_one_attack_example: bool = true
 
 var country_health: int = initial_health
 
-@onready var _animation_healthbar = $VBoxContainer/upper/HealthbarContainer/Healthbar
-@onready var _animation_explosion = $VBoxContainer/upper/Explosion
-@onready var _animation_flag = $VBoxContainer/upper/FlagContainer/Flag
-@onready var _animation_city = $VBoxContainer/upper/CityContainer/City
+@onready var _animation_healthbar = $Healthbar
+@onready var _animation_explosion = $Explosion
+@onready var _animation_flag = $Flag
+@onready var _animation_city = $City
 const CITY_FRAMES: int = 3
 
 func _ready():
-	_animation_healthbar.frame = 0
-	_animation_explosion.visible = false
-	_animation_flag.play()
-	_animation_city.frame = 0
+		_animation_healthbar.frame = 0
+		_animation_explosion.visible = false
+		_animation_flag.play()
+		_animation_city.frame = 0
 
 func _process(delta: Variant):
 	time_country = time_country + delta
@@ -40,7 +40,7 @@ func _process(delta: Variant):
 		
 		country_health = country_health + health_step
 		# frame 1-8, frame 1 is unhealthy, frame 8 is healthy
-		_animation_healthbar.frame = round(country_health/health_step)
+		#_animation_healthbar.frame = round(country_health/health_step)
 		print('update country health!')
 		
 		# update city sprite depending on health and 3 frames of city health

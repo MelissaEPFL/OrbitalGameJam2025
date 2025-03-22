@@ -8,7 +8,7 @@ enum State {
 
 var current_state = State.IDLE
 
-@onready var chaudron = $Chaudrons
+@onready var chaudron:Node2D = $Chaudron
 
 func _ready():
 	
@@ -24,7 +24,7 @@ func _process(delta):
 			play("idle")
 	
 func _conveyor_on_off():
-	if current_state == "IDLE":
-		current_state = "MOVING"
-	elif current_state == "MOVING":
-		current_state = "IDLE"
+	if current_state == State.IDLE:
+		current_state = State.MOVING
+	elif current_state == State.MOVING:
+		current_state = State.IDLE

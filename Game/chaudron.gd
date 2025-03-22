@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends Node2D
 
 # Signals
 signal chaudron_moving
@@ -19,7 +19,7 @@ enum State {
 var current_state = State.IDLE
 
 # child AnimatedSprite2D
-@onready var sprite_chaudron = $Chaudrons
+@onready var sprite_chaudron = $Groupe_chaudrons
 @onready var gameManager = $GameManager
 
 func _ready():

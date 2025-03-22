@@ -18,18 +18,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Chaudrons" type="Node2D"]
-position = Vector2(277, 86)
+[node name="Chaudron" type="Node2D"]
 script = ExtResource("1_ugpeo")
 
-[node name="Chaudrons" type="Node2D" parent="."]
+[node name="Groupe_chaudrons" type="Node2D" parent="."]
 
-[node name="Chaudrons" type="AnimatedSprite2D" parent="Chaudrons"]
+[node name="Chaudrons" type="AnimatedSprite2D" parent="Groupe_chaudrons"]
 position = Vector2(-426.25, 330.457)
 scale = Vector2(0.462298, 0.462298)
 sprite_frames = SubResource("SpriteFrames_tirl1")
 
-[node name="Chaudrons2" type="AnimatedSprite2D" parent="Chaudrons"]
+[node name="Chaudrons2" type="AnimatedSprite2D" parent="Groupe_chaudrons"]
 position = Vector2(233, 330.457)
 scale = Vector2(0.462298, 0.462298)
 sprite_frames = SubResource("SpriteFrames_tirl1")

@@ -1,29 +1,29 @@
 extends Node
 
 # each X seconds, we update stuff
-const time_step = 2
+const time_step: int = 2
 
-var time_country = 0
-var last_time_increment = 0
+var time_country: float = 0
+var last_time_increment: int = 0
 
 # country has to build up
-const initial_health = 0
-const health_step = 100
+const initial_health: int = 0
+const health_step: int = 100
 # TODO tie some game over logic
-const maximum_country_health = 1000
+const maximum_country_health: int = 1000
 
-const attack_damage = 350
-const attack_animation_duration = 3
-var city_last_attack = -1
-var debug_play_one_attack_example = true
+const attack_damage: int = 350
+const attack_animation_duration: int = 3
+var city_last_attack: int = -1
+var debug_play_one_attack_example: bool = true
 
-var country_health = initial_health
+var country_health: int = initial_health
 
 @onready var _animation_healthbar = $VBoxContainer/upper/HealthbarContainer/Healthbar
 @onready var _animation_explosion = $VBoxContainer/upper/Explosion
 @onready var _animation_flag = $VBoxContainer/upper/FlagContainer/Flag
 @onready var _animation_city = $VBoxContainer/upper/CityContainer/City
-const CITY_FRAMES = 3
+const CITY_FRAMES: int = 3
 
 func _ready():
 	_animation_healthbar.frame = 0
@@ -31,8 +31,9 @@ func _ready():
 	_animation_flag.play()
 	_animation_city.frame = 0
 
-func _process(delta):
+func _process(delta: Variant):
 	time_country = time_country + delta
+	#print(time_country)
 	
 	if time_country - last_time_increment > time_step: 
 		last_time_increment = last_time_increment + time_step

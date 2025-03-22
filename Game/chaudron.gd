@@ -6,10 +6,10 @@ signal chaudron_arrived
 
 # Variables for positions
 var left_position = Vector2(-72, 73)  # Outside the left screen
-var right_position = Vector2(937, 73)  # Outside the right screen
+var right_position = Vector2(587, 73)  # Outside the right screen
 
 # Speed for movement
-var movement_speed = 200  # Pixels per second
+var movement_speed = 300  # Pixels per second
 
 # States
 enum State {
@@ -19,7 +19,6 @@ enum State {
 var current_state = State.IDLE
 
 func _ready():
-	print(get_node("../GameManager"))
 	# Initial position of the sprite
 	position = left_position
 

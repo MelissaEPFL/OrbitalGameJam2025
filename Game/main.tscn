@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3ysm3n3etekc" path="res://GameStateManagement.gd" id="1_272bh"]
 [ext_resource type="Texture2D" uid="uid://d4fp16xf8tfwv" path="res://assets/nuclear_plant_control_pannel.jpg" id="2_5vw27"]
+[ext_resource type="PackedScene" uid="uid://b4sy00ot8bfvn" path="res://country.tscn" id="3_5vw27"]
 [ext_resource type="Texture2D" uid="uid://mafoh57dq207" path="res://assets/Perso-Gome-Jum.png" id="3_kek77"]
 [ext_resource type="Script" uid="uid://bt3h3pymd07gw" path="res://martin.gd" id="4_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cjjhqpe5jdkf8" path="res://assets/conveyor_belt_anim,.png" id="5_efxa6"]
@@ -190,6 +191,14 @@ offset_left = 810.0
 offset_top = -3.05176e-05
 offset_right = 1150.0
 offset_bottom = 648.0
+
+[node name="country" parent="Menu droite" instance=ExtResource("3_5vw27")]
+
+[node name="country2_with_offset" parent="Menu droite" instance=ExtResource("3_5vw27")]
+position = Vector2(0, 200)
+
+[node name="country3_with_offset" parent="Menu droite" instance=ExtResource("3_5vw27")]
+position = Vector2(0, 400)
 
 [node name="Menu central" type="Panel" parent="."]
 layout_mode = 0

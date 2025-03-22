@@ -4,7 +4,7 @@ enum IncantationInputs { UP, DOWN, RIGHT, LEFT}
 
 signal targetChanged(old_value: int, new_value: int)
 signal failedMissileLaunch
-signal successfulMissileLaunch
+signal successfulMissileLaunch(target : int)
 
 
 signal incantationCharacterStream(char: String)
@@ -126,7 +126,7 @@ func user_pressed_enter_on_current_pot():
 	var is_valid_ingredients_in_pot: bool = targets[current_target].validate_ingredients(ingredients_in_pot)
 	if is_valid_ingredients_in_pot:
 		print("Successful firing !")
-		successfulMissileLaunch.emit()
+		successfulMissileLaunch.emit(current_target)
 	else:
 		failedMissileLaunch.emit()
 		print("You failed, nul !")
@@ -162,6 +162,7 @@ func _input(event: InputEvent) -> void:
 			deleteInputs()
 		if event.keycode == KEY_ENTER:
 			user_pressed_enter_on_current_pot()
+			incantationCharacterStream.emit("RESET")
 		print("-----------")
 		print(current_incantation)
 		print(ingredients_in_pot)

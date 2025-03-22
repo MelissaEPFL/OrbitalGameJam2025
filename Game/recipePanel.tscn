@@ -1,12 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx0pg141lqpqk"]
+[gd_scene load_steps=11 format=3 uid="uid://dx0pg141lqpqk"]
 
 [ext_resource type="Script" uid="uid://7or2mr2o7so2" path="res://recipe_panel.gd" id="1_6ogsb"]
-[ext_resource type="Texture2D" uid="uid://b4ea6lyafp553" path="res://icon.svg" id="1_cbd0w"]
+[ext_resource type="Texture2D" uid="uid://dn77gs10hvy3h" path="res://assets/les 6 éléments.png" id="2_6ogsb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5qjd"]
 font_size = 29
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5qjd"]
+atlas = ExtResource("2_6ogsb")
+region = Rect2(0, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh06s"]
+atlas = ExtResource("2_6ogsb")
+region = Rect2(324, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s17hk"]
+atlas = ExtResource("2_6ogsb")
+region = Rect2(648, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsvf5"]
+atlas = ExtResource("2_6ogsb")
+region = Rect2(972, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coydt"]
+atlas = ExtResource("2_6ogsb")
+region = Rect2(1296, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2biib"]
+atlas = ExtResource("2_6ogsb")
+region = Rect2(1620, 0, 324, 337)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cbd0w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5qjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh06s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s17hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsvf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_coydt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2biib")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="RecipePanel" type="Panel"]
 custom_minimum_size = Vector2(232, 88)
@@ -30,11 +80,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(185, 43)
-scale = Vector2(0.570312, 0.546875)
-texture = ExtResource("1_cbd0w")
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -46,3 +91,10 @@ text = "↑↓→←"
 label_settings = SubResource("LabelSettings_c5qjd")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(181.25, 41.2986)
+scale = Vector2(0.467593, 0.467593)
+sprite_frames = SubResource("SpriteFrames_cbd0w")
+frame_progress = 0.600589
+speed_scale = 0.5

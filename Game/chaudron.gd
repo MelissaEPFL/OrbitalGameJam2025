@@ -5,8 +5,8 @@ signal chaudron_moving
 signal chaudron_arrived
 
 # Variables for positions
-var left_position = Vector2(-72, 73)  # Outside the left screen
-var right_position = Vector2(587, 73)  # Outside the right screen
+var left_position = Vector2(-90, 27)  # Outside the left screen
+var right_position = Vector2(569, 73)  # Outside the right screen
 
 # Speed for movement
 var movement_speed = 300  # Pixels per second

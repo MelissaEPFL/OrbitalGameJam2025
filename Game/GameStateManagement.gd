@@ -6,6 +6,9 @@ signal targetChanged(old_value: int, new_value: int)
 signal failedMissileLaunch
 signal successfulMissileLaunch
 
+
+signal incantationCharacterStream
+
 class IngredientIncantation:
 	var ingredientName: String
 	var inputs : Array[IncantationInputs]

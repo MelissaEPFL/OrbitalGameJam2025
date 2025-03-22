@@ -2,6 +2,9 @@ extends Node2D
 
 enum IncantationInputs { UP, DOWN, RIGHT, LEFT}
 
+signal targetChanged(old_value: int, new_value: int)
+signal failedMissileLaunch
+signal successfulMissileLaunch
 
 class IngredientIncantation:
 	var ingredientName: String
@@ -108,14 +111,17 @@ func user_pressed_enter_on_current_pot():
 	var is_valid_ingredients_in_pot: bool = targets[current_target].validate_ingredients(ingredients_in_pot)
 	if is_valid_ingredients_in_pot:
 		print("Successful firing !")
+		successfulMissileLaunch.emit()
 	else:
+		failedMissileLaunch.emit()
 		print("You failed, nul !")
 
 func assign_target(new_target : int) -> bool:
 	print("Pressed " + str(new_target))
 	if new_target in valid_targets:
-		current_target = new_target
 		print("Target assigned at : " + str(current_target))
+		targetChanged.emit(current_target, new_target)
+		current_target = new_target
 		return true
 	else:
 		return false

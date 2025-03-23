@@ -1,4 +1,4 @@
-# Nuclear Mixology
+# A Drink to Die for
 
 ## Authors
 

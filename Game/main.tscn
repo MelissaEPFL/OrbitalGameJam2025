@@ -301,12 +301,13 @@ offset_right = 1150.0
 offset_bottom = 648.0
 
 [node name="country" parent="Menu droite" instance=ExtResource("3_5vw27")]
+position = Vector2(32, -39)
 
 [node name="country2_with_offset" parent="Menu droite" instance=ExtResource("3_5vw27")]
-position = Vector2(0, 200)
+position = Vector2(32, 141)
 
 [node name="country3_with_offset" parent="Menu droite" instance=ExtResource("3_5vw27")]
-position = Vector2(0, 400)
+position = Vector2(32, 321)
 
 [node name="Menu central" type="Panel" parent="."]
 z_index = -1

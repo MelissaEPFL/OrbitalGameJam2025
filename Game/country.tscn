@@ -1,87 +1,50 @@
-[gd_scene load_steps=49 format=3 uid="uid://b4sy00ot8bfvn"]
+[gd_scene load_steps=44 format=3 uid="uid://b4sy00ot8bfvn"]
 
 [ext_resource type="Script" uid="uid://2ot031kd13ag" path="res://country.gd" id="1_rk51i"]
-[ext_resource type="Texture2D" uid="uid://cebruahwu2tjh" path="res://assets/flag_sprites.png" id="3_05fxv"]
+[ext_resource type="Texture2D" uid="uid://bgegxc1tmiq2d" path="res://assets/Drapeau USA.png" id="2_nsy2n"]
+[ext_resource type="Texture2D" uid="uid://dtti4e6pap7qs" path="res://assets/Drapeau Pays-Bas.png" id="2_oplum"]
 [ext_resource type="Texture2D" uid="uid://brp03x0rd4o5x" path="res://assets/Ville.png" id="3_nsy2n"]
+[ext_resource type="Texture2D" uid="uid://b5getcui1os8q" path="res://assets/Drapeau Vietnam.png" id="4_61gs2"]
 [ext_resource type="Texture2D" uid="uid://ci5fue0ffuxwa" path="res://assets/Barre de vie.png" id="4_nsy2n"]
 [ext_resource type="Texture2D" uid="uid://dk08ascnn7mjv" path="res://assets/Explosion.png" id="6_05fxv"]
 [ext_resource type="Texture2D" uid="uid://cafm4fkdvkbji" path="res://assets/les 6 éléments.png" id="6_nsy2n"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rk51i"]
-atlas = ExtResource("3_05fxv")
-region = Rect2(0, 0, 202, 324)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nsy2n"]
-atlas = ExtResource("3_05fxv")
-region = Rect2(202, 0, 202, 324)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6mp7"]
+atlas = ExtResource("2_oplum")
+region = Rect2(0, 0, 594, 447)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05fxv"]
-atlas = ExtResource("3_05fxv")
-region = Rect2(404, 0, 202, 324)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oplum"]
-atlas = ExtResource("3_05fxv")
-region = Rect2(606, 0, 202, 324)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_61gs2"]
-atlas = ExtResource("3_05fxv")
-region = Rect2(808, 0, 202, 324)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e6mp7"]
-atlas = ExtResource("3_05fxv")
-region = Rect2(1010, 0, 202, 324)
+atlas = ExtResource("2_nsy2n")
+region = Rect2(0, 0, 594, 447)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_541y3"]
-atlas = ExtResource("3_05fxv")
-region = Rect2(1212, 0, 202, 324)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dpgnl"]
-atlas = ExtResource("3_05fxv")
-region = Rect2(1414, 0, 202, 324)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qywo3"]
-atlas = ExtResource("3_05fxv")
-region = Rect2(1616, 0, 202, 324)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3lu4g"]
-atlas = ExtResource("3_05fxv")
-region = Rect2(1818, 0, 202, 324)
+atlas = ExtResource("4_61gs2")
+region = Rect2(0, 0, 594, 447)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhgx1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rk51i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nsy2n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_05fxv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oplum")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_61gs2")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_e6mp7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_541y3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dpgnl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qywo3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3lu4g")
 }],
 "loop": true,
-"name": &"default",
+"name": &"country_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05fxv")
+}],
+"loop": true,
+"name": &"country_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_541y3")
+}],
+"loop": true,
+"name": &"country_3",
 "speed": 5.0
 }]
 
@@ -309,10 +272,23 @@ animations = [{
 [node name="country" type="Node2D"]
 script = ExtResource("1_rk51i")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.662745)
+clip_contents = true
+anchors_preset = -1
+anchor_right = 0.974
+anchor_bottom = 0.943
+offset_top = 53.0
+offset_right = 290.0
+offset_bottom = 227.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Flag" type="AnimatedSprite2D" parent="."]
-position = Vector2(65.25, 73.5)
-scale = Vector2(0.55198, 0.441358)
+position = Vector2(50, 122)
+scale = Vector2(0.162677, 0.130075)
 sprite_frames = SubResource("SpriteFrames_xhgx1")
+animation = &"country_3"
 
 [node name="City" type="AnimatedSprite2D" parent="."]
 position = Vector2(151, 99)
@@ -333,16 +309,16 @@ sprite_frames = SubResource("SpriteFrames_jwml4")
 frame_progress = 0.41607
 
 [node name="Ingredient01" type="AnimatedSprite2D" parent="."]
-position = Vector2(50, 201)
+position = Vector2(50, 180.55)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_m32ii")
 
 [node name="Ingredient02" type="AnimatedSprite2D" parent="."]
-position = Vector2(150, 201)
+position = Vector2(150, 180.55)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_m32ii")
 
 [node name="Ingredient03" type="AnimatedSprite2D" parent="."]
-position = Vector2(250, 201)
+position = Vector2(250, 180.55)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_m32ii")

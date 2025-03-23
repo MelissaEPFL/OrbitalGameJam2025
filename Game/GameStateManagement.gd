@@ -187,7 +187,10 @@ func _ready() -> void:
 	# Example of incantations
 	available_incantations.append(uranium)
 	available_incantations.append(banana)
-	available_incantations.append(amethyst)	
+	available_incantations.append(amethyst)
+	available_incantations.append(blood)
+	available_incantations.append(orange)
+	available_incantations.append(diamond)
 	
 	#var target: Target = Target.new(some_recipe)
 	# Assign a value to the dictionary

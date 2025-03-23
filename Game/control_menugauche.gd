@@ -30,6 +30,9 @@ func update_sprite(sprite_frame: int, recipe_panel_num: int):
 	current_panel.get_node("AnimatedSprite2D").frame = sprite_frame
 	current_panel.flash_green()
 
+func foo( target :int):
+	pass
+
 func update_incantation(new_text: String, recipe_panel_num: int):
 	var current_panel : Panel = select_RecipePanel(recipe_panel_num)
 	var label : Label = current_panel.get_node("Label") # Access the "Label" node inside "panel3"

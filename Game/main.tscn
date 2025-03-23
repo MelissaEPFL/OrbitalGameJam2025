@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cjjhqpe5jdkf8" path="res://assets/conveyor_belt_anim,.png" id="5_efxa6"]
 [ext_resource type="Script" uid="uid://bcqg1gnybc3bt" path="res://conveyor_belt.gd" id="6_dg77c"]
 [ext_resource type="PackedScene" uid="uid://bcs8y5ylt07we" path="res://chaudron.tscn" id="7_ycdy4"]
-[ext_resource type="PackedScene" path="res://incantationDisplay.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://cnssvg84henkc" path="res://incantationDisplay.tscn" id="8_5vw27"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5ude"]
 atlas = ExtResource("3_kek77")
@@ -192,9 +192,8 @@ offset_bottom = 648.0
 layout_mode = 1
 offset_left = 16.0
 offset_top = 15.0
-offset_right = -324.0
-offset_bottom = 15.0
-scale = Vector2(1.31341, 1.0235)
+offset_right = 19.0
+offset_bottom = 20.0
 
 [node name="Menu droite" type="Panel" parent="."]
 z_index = 1
@@ -248,6 +247,7 @@ script = ExtResource("6_dg77c")
 
 [connection signal="failedMissileLaunch" from="GameManager" to="Menu central/Martin" method="_on_failure"]
 [connection signal="incantationCharacterStream" from="GameManager" to="Menu central/IncantationPanel" method="treatSignal"]
+[connection signal="successfulMissileLaunch" from="GameManager" to="Menu gauche/ControlMenugauche" method="foo"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Chaudron" method="_on_recipe_change"]
 [connection signal="chaudron_arrived" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]
 [connection signal="chaudron_moving" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]

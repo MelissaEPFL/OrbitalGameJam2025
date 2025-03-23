@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dx0pg141lqpqk"]
 
 [ext_resource type="Script" uid="uid://7or2mr2o7so2" path="res://recipe_panel.gd" id="1_6ogsb"]
-[ext_resource type="Texture2D" uid="uid://dn77gs10hvy3h" path="res://assets/les 6 éléments.png" id="2_6ogsb"]
+[ext_resource type="Texture2D" uid="uid://cafm4fkdvkbji" path="res://assets/les 6 éléments.png" id="2_6ogsb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5qjd"]
 font_size = 29
@@ -74,7 +74,7 @@ script = ExtResource("1_6ogsb")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 232.0
+offset_right = 313.0
 offset_bottom = 88.0
 color = Color(0.255659, 0.255659, 0.255659, 1)
 
@@ -84,7 +84,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.974
 anchor_bottom = 0.943
-offset_right = 0.0319977
+offset_right = 81.032
 offset_bottom = 0.0159988
 grow_horizontal = 2
 grow_vertical = 2
@@ -102,7 +102,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(181.25, 41.2986)
+position = Vector2(263, 38)
 scale = Vector2(0.467593, 0.467593)
 sprite_frames = SubResource("SpriteFrames_cbd0w")
 frame_progress = 0.600589

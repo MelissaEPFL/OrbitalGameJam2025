@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnssvg84henkc"]
 
-[ext_resource type="Script" uid="uid://c5o0gipfe06bg" path="res://IncantationDisplayer.gd" id="1_oi3ir"]
+[ext_resource type="Script" uid="uid://dpybthtuu4jtb" path="res://IncantationDisplayer.gd" id="1_oi3ir"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5qjd"]
 font_size = 29

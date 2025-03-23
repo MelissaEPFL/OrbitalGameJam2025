@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://btege1aabypb5" path="res://assets/Yummy.png" id="5_ycdy4"]
 [ext_resource type="Script" uid="uid://bcqg1gnybc3bt" path="res://conveyor_belt.gd" id="6_dg77c"]
 [ext_resource type="PackedScene" uid="uid://bcs8y5ylt07we" path="res://chaudron.tscn" id="7_ycdy4"]
-[ext_resource type="PackedScene" path="res://incantationDisplay.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://cnssvg84henkc" path="res://incantationDisplay.tscn" id="8_5vw27"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
 atlas = ExtResource("3_kek77")

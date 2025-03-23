@@ -344,6 +344,7 @@ animation = &"idle"
 script = ExtResource("6_dg77c")
 
 [connection signal="associateRecipeElement" from="GameManager" to="Menu gauche/ControlMenugauche" method="interecpt_setup"]
+[connection signal="emptyIncantation" from="GameManager" to="GameManager/FinishedIngredients" method="reset_grid"]
 [connection signal="failedMissileLaunch" from="GameManager" to="Menu central/Martin" method="_on_failure"]
 [connection signal="incantationCharacterStream" from="GameManager" to="Menu central/IncantationPanel" method="treatSignal"]
 [connection signal="recipeForTarget" from="GameManager" to="Menu droite/country" method="_on_game_manager_recipe_for_target"]
@@ -351,7 +352,7 @@ script = ExtResource("6_dg77c")
 [connection signal="recipeForTarget" from="GameManager" to="Menu droite/country3_with_offset" method="_on_game_manager_recipe_for_target"]
 [connection signal="successfulIncantation" from="GameManager" to="GameManager/FinishedIngredients" method="update_ingredient"]
 [connection signal="successfulIncantation" from="GameManager" to="Menu gauche/ControlMenugauche" method="interecpt_success"]
-[connection signal="successfulMissileLaunch" from="GameManager" to="GameManager/FinishedIngredients" method="reset_grid"]
+[connection signal="successfulMissileLaunch" from="GameManager" to="GameManager/FinishedIngredients" method="reset_grid_success"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu droite/country" method="_on_game_manager_successful_missile_launch"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu droite/country2_with_offset" method="_on_game_manager_successful_missile_launch"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu droite/country3_with_offset" method="_on_game_manager_successful_missile_launch"]

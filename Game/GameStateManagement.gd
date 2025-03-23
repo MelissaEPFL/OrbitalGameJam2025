@@ -11,6 +11,8 @@ signal associateRecipeElement(incantation_input_string: String, sprite_frame: in
 
 signal incantationCharacterStream(char: String)
 
+signal emptyIncantation
+
 # recipe for target 1, recipe for target 2...
 signal recipeForTarget(recipes: Array[Recipe])
 
@@ -86,12 +88,16 @@ func receiveInput(receivedInput : IncantationInputs):
 func deleteInputs():
 	if current_incantation.size() == 0:
 		ingredients_in_pot = []
+		emptyIncantation.emit()
 	current_incantation = []
 	
+		
 var current_target = 1
 var valid_targets : Array[int] = []
 # Or you can initialize using Dictionary() to explicitly indicate it's a Dictionary
 var targets : Dictionary[int, Target] = {}
+
+
 
 func _ready() -> void:
 	# Example for testing

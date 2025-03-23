@@ -14,7 +14,7 @@ func select_RecipePanel(recipe_panel_num:int) -> Panel:
 		4:
 			current_panel = $RecipePanel5
 		5:
-			current_panel = $pRecipePanel6
+			current_panel = $RecipePanel6
 		_:
 			print("WRONG NUMBER")
 	return current_panel

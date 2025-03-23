@@ -29,10 +29,12 @@ func update_ingredient(fleches:String, ingredient_index: int):
 			#update correct sprite
 			var new_sprite:String = "sprite_" + str(ingredient_index)
 			ingredients[i].play(new_sprite)
+			ingredient_states[i] = new_sprite
 			return
 			
 func reset_grid(target:int):
 		# Initialize empty ingredients
 	for i in range(nbr_ingr):
 		ingredients[i].play("empty")
+		ingredient_states[i] = "empty"
 		

@@ -85,8 +85,10 @@ func _process(delta: Variant):
 		# frame 1: building
 		# frame 2: ok
 		# change 3
+		# 200 is just magic number so ~30% is destroy, 30-70 is okaish and
+		# 70+ is healthy
 		_animation_city.frame = roundi(
-			fmod(country_health, maximum_country_health) / 
+			fmod(country_health - 200, maximum_country_health) / 
 			(maximum_country_health / CITY_FRAMES)
 		) if country_health < maximum_country_health else 2
 		#print(ID, ': ', _animation_city.frame, '||||',country_health, '||||', maximum_country_health)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dupgtndhtv0uw"]
+[gd_scene load_steps=45 format=3 uid="uid://dupgtndhtv0uw"]
 
 [ext_resource type="Script" uid="uid://c3ysm3n3etekc" path="res://GameStateManagement.gd" id="1_272bh"]
 [ext_resource type="Texture2D" uid="uid://d4fp16xf8tfwv" path="res://assets/nuclear_plant_control_pannel.jpg" id="2_5vw27"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bcqg1gnybc3bt" path="res://conveyor_belt.gd" id="6_dg77c"]
 [ext_resource type="PackedScene" uid="uid://bcs8y5ylt07we" path="res://chaudron.tscn" id="7_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://cnssvg84henkc" path="res://incantationDisplay.tscn" id="8_5vw27"]
+[ext_resource type="Script" path="res://condition_mort.gd" id="8_w48qg"]
 [ext_resource type="Script" uid="uid://cjjn4arkrvdyj" path="res://MusicManagement.gd" id="14_vivmo"]
 [ext_resource type="AudioStream" uid="uid://c0n2poupi2xhh" path="res://music/Orbital2025 Project.wav" id="15_2cqfq"]
 [ext_resource type="Script" uid="uid://be36yxlmo2ufi" path="res://successful_incantation_player.gd" id="16_2cqfq"]
@@ -305,14 +306,16 @@ offset_left = 810.0
 offset_top = -3.05176e-05
 offset_right = 1150.0
 offset_bottom = 648.0
+script = ExtResource("8_w48qg")
 
 [node name="country" parent="Menu droite" instance=ExtResource("3_5vw27")]
+position = Vector2(32, -39)
 
 [node name="country2_with_offset" parent="Menu droite" instance=ExtResource("3_5vw27")]
-position = Vector2(0, 200)
+position = Vector2(32, 141)
 
 [node name="country3_with_offset" parent="Menu droite" instance=ExtResource("3_5vw27")]
-position = Vector2(0, 400)
+position = Vector2(32, 321)
 
 [node name="Menu central" type="Panel" parent="."]
 z_index = -1
@@ -368,6 +371,7 @@ script = ExtResource("18_074og")
 script = ExtResource("19_cegan")
 
 [connection signal="associateRecipeElement" from="GameManager" to="Menu gauche/ControlMenugauche" method="interecpt_setup"]
+[connection signal="emptyIncantation" from="GameManager" to="GameManager/FinishedIngredients" method="reset_grid"]
 [connection signal="failedMissileLaunch" from="GameManager" to="Menu central/Martin" method="_on_failure"]
 [connection signal="failedMissileLaunch" from="GameManager" to="Node/FailedLaunch" method="play_sound"]
 [connection signal="incantationCharacterStream" from="GameManager" to="Menu central/IncantationPanel" method="treatSignal"]
@@ -378,12 +382,13 @@ script = ExtResource("19_cegan")
 [connection signal="recipeForTarget" from="GameManager" to="Menu droite/country3_with_offset" method="_on_game_manager_recipe_for_target"]
 [connection signal="successfulIncantation" from="GameManager" to="GameManager/FinishedIngredients" method="update_ingredient"]
 [connection signal="successfulIncantation" from="GameManager" to="Menu gauche/ControlMenugauche" method="interecpt_success"]
-[connection signal="successfulMissileLaunch" from="GameManager" to="GameManager/FinishedIngredients" method="reset_grid"]
+[connection signal="successfulMissileLaunch" from="GameManager" to="GameManager/FinishedIngredients" method="reset_grid_success"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu droite/country" method="_on_game_manager_successful_missile_launch"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu droite/country2_with_offset" method="_on_game_manager_successful_missile_launch"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu droite/country3_with_offset" method="_on_game_manager_successful_missile_launch"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Chaudron" method="_on_recipe_change"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Martin" method="_on_success"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Node/SuccessfulLaunch" method="play_sound"]
+[connection signal="youLose" from="Menu droite" to="GameManager" method="change_to_deat_screen"]
 [connection signal="chaudron_arrived" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]
 [connection signal="chaudron_moving" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]

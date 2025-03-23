@@ -37,7 +37,7 @@ func update_ingredient(fleches:String, ingredient_index: int):
 			ingredient_states[i] = new_sprite
 			return
 			
-func reset_grid(target:int):
+func reset_grid_success(target:int):
 		# Initialize empty ingredients
 	for i in range(nbr_ingr):
 		ingredients[i].play("empty")
@@ -46,5 +46,9 @@ func reset_grid(target:int):
 		#play success animation
 		yummy.play("boom")
 
-		
+func reset_grid():
+		# Initialize empty ingredients
+	for i in range(nbr_ingr):
+		ingredients[i].play("empty")
+		ingredient_states[i] = "empty"
 		

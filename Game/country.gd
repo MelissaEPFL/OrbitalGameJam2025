@@ -45,7 +45,7 @@ func _ready():
 	print('ID is ' + ID)
 	_animation_healthbar.frame = 0
 	_animation_explosion.visible = false
-	_animation_flag.play()
+	_animation_flag.play("country_"+str(ID))
 	_animation_city.frame = 0
 	if ID == '1':
 		print('set target 1 recipe: ', all_recipes[0], all_recipes[1], all_recipes[2])

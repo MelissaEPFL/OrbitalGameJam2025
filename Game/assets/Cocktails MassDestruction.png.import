@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3osgak8u04s5"
-path="res://.godot/imported/Background.jpg-4778156f105d3bb8084fa6f7bd69c45e.ctex"
+uid="uid://dxw76ni13gdm"
+path="res://.godot/imported/Cocktails MassDestruction.png-3e5227c22d6a17e84de365ea5efdbffb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Background.jpg"
-dest_files=["res://.godot/imported/Background.jpg-4778156f105d3bb8084fa6f7bd69c45e.ctex"]
+source_file="res://assets/Cocktails MassDestruction.png"
+dest_files=["res://.godot/imported/Cocktails MassDestruction.png-3e5227c22d6a17e84de365ea5efdbffb.ctex"]
 
 [params]
 

@@ -19,6 +19,8 @@ var debug_play_one_attack_example: bool = true
 
 var country_health: int = initial_health
 
+var is_targeted: bool = false
+
 @onready var _animation_healthbar = $Healthbar
 @onready var _animation_explosion = $Explosion
 
@@ -28,6 +30,8 @@ var country_health: int = initial_health
 
 @onready var _animation_flag = $Flag
 @onready var _animation_city = $City
+
+@onready var _color_rect = $ColorRect
 const CITY_FRAMES: int = 3
 
 var all_recipes: Array[int]
@@ -36,6 +40,12 @@ var recipe: Array[int]
 var damage_country_next_time = false
 
 var ID: String
+
+func receive_targeting_signal(old_value : int, new_value : int):
+	if str(new_value) == ID:
+		is_targeted = true
+	else:
+		is_targeted = false
 
 func _ready():
 	var regex = RegEx.new()
@@ -66,7 +76,13 @@ func _ready():
 		_animation_ingredient02.frame = all_recipes[7]
 		_animation_ingredient03.frame = all_recipes[8]
 
+		
 func _process(delta: Variant):
+	if is_targeted:
+		_color_rect.modulate = Color.INDIAN_RED
+	else:
+		_color_rect.modulate = Color.WHITE
+	
 	time_country = time_country + delta
 	#print(time_country)
 	

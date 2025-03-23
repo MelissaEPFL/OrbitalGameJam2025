@@ -6,16 +6,22 @@ signal targetChanged(old_value: int, new_value: int)
 signal failedMissileLaunch
 signal successfulMissileLaunch(target : int)
 
+signal successfulIncantation(incantation_input_string : String, sprite_frame: int)
+signal associateRecipeElement(incantation_input_string: String, sprite_frame: int)
 
 signal incantationCharacterStream(char: String)
 
 class IngredientIncantation:
 	var ingredientName: String
 	var inputs : Array[IncantationInputs]
+	var sprite_frame : int
+	var incantation_string : String
 	
-	func _init(recipe_ingredients : Array[IncantationInputs], name : String) -> void:
+	func _init(recipe_ingredients : Array[IncantationInputs], name : String, sprite_frameU : int, incantation_stringU : String) -> void:
 		inputs = recipe_ingredients
 		ingredientName = name
+		sprite_frame = sprite_frameU
+		incantation_string = incantation_stringU
 		
 	func validate_incantation(ingredients_to_compare: Array[IncantationInputs]) -> bool:
 		return inputs == ingredients_to_compare
@@ -64,6 +70,7 @@ func receiveInput(receivedInput : IncantationInputs):
 			ingredients_in_pot.append(available_incantations[i])
 			current_incantation = []
 			incantationCharacterStream.emit("SUCCESS")
+			successfulIncantation.emit(available_incantations[i].incantation_string,available_incantations[i].sprite_frame)
 			success_in_pattern = true
 	
 	print("CONDITIONS !!")
@@ -85,7 +92,8 @@ var targets : Dictionary[int, Target] = {}
 
 func _ready() -> void:
 	# Example for testing
-	var bigbomb : IngredientIncantation = IngredientIncantation.new(
+	var my_array = []
+	var uranium : IngredientIncantation = IngredientIncantation.new(
 		[
 			IncantationInputs.UP,
 			IncantationInputs.RIGHT,
@@ -93,10 +101,14 @@ func _ready() -> void:
 			IncantationInputs.DOWN,
 			IncantationInputs.DOWN
 		],
-		"bigbomb"
+		"uranium",
+		0,
+		"↑→↓↓↓"
 	)
+	my_array.append(uranium)
 
-	var thorium : IngredientIncantation = IngredientIncantation.new(
+
+	var banana : IngredientIncantation = IngredientIncantation.new(
 		[
 			IncantationInputs.UP,
 			IncantationInputs.RIGHT,
@@ -104,9 +116,73 @@ func _ready() -> void:
 			IncantationInputs.UP,
 			IncantationInputs.DOWN
 		],
-		"thorium"
+		"banana",
+		1,
+		"↑→←↑↓"
 	)
-	var some_recipe : Recipe = Recipe.new([bigbomb, thorium])
+	my_array.append(banana)
+
+
+	var amethyst : IngredientIncantation = IngredientIncantation.new(
+		[
+			IncantationInputs.UP,
+			IncantationInputs.DOWN,
+			IncantationInputs.UP,
+			IncantationInputs.DOWN,
+			IncantationInputs.RIGHT
+		],
+		"amethyst",
+		2,
+		"↑↓↑↓→"
+	)
+	my_array.append(amethyst)
+
+
+	#TODO put different incantation fro blood orange and diamond 
+	var blood : IngredientIncantation = IngredientIncantation.new(
+		[
+			IncantationInputs.UP,
+			IncantationInputs.RIGHT,
+			IncantationInputs.LEFT,
+			IncantationInputs.UP,
+			IncantationInputs.DOWN
+		],
+		"blood",
+		3,
+		"↑→←↑↓"
+	)
+
+	var orange : IngredientIncantation = IngredientIncantation.new(
+		[
+			IncantationInputs.UP,
+			IncantationInputs.RIGHT,
+			IncantationInputs.LEFT,
+			IncantationInputs.UP,
+			IncantationInputs.DOWN
+		],
+		"orange",
+		4,
+		"↑→←↑↓"
+	)
+
+	var diamond : IngredientIncantation = IngredientIncantation.new(
+		[
+			IncantationInputs.UP,
+			IncantationInputs.RIGHT,
+			IncantationInputs.LEFT,
+			IncantationInputs.UP,
+			IncantationInputs.DOWN
+		],
+		"diamond",
+		5,
+		"↑→←↑↓"
+	)
+	var some_recipe : Recipe = Recipe.new([uranium, banana, amethyst])
+	#var some_recipe : Recipe = Recipe.new([uranium, banana, amethyst, blood, orange, diamond ])
+	for element in my_array: #TODO iterate over the things in recipe
+		associateRecipeElement.emit(element.incantation_string, element.sprite_frame)
+
+
 	
 	var target: Target = Target.new(some_recipe)
 	# Assign a value to the dictionary
@@ -117,8 +193,9 @@ func _ready() -> void:
 	
 	
 	# Example of incantations
-	available_incantations.append(thorium)
-	available_incantations.append(bigbomb)
+	available_incantations.append(uranium)
+	available_incantations.append(banana)
+	available_incantations.append(amethyst)
 	
 	
 	

@@ -9,6 +9,8 @@ signal oneCityBuilt
 
 var health_step_increase_per_minute = 20
 var health_step_start = 20
+
+const ALIGNER = 5
 	
 func _ready():
 	#initial health step
@@ -18,7 +20,7 @@ func _ready():
 
 func _process(delta):
 	
-	if (country1.country_health >= 1000) or (country2.country_health >= 1000) or (country3.country_health >= 1000):
+	if (country1.country_health*ALIGNER >= 1000) or (country2.country_health*ALIGNER >= 1000) or (country3.country_health*ALIGNER >= 1000):
 		youLose.emit()
 	#if (country1.country_health == 1000) and (country2.country_health == 1000) and (country3.country_health == 1000):
 	#	youLose.emit()

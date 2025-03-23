@@ -72,6 +72,8 @@ func _process(delta: Variant):
 	
 	if time_country - last_time_increment > time_step: 
 		last_time_increment = last_time_increment + time_step
+		print("oigejoiejrg")
+		print(country_health)
 		
 		country_health = country_health + health_step
 		if country_health > maximum_country_health:

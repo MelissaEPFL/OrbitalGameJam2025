@@ -9,7 +9,7 @@ var left_position = Vector2(-90, 27)  # Outside the left screen
 var right_position = Vector2(569, 27)  # Outside the right screen
 
 # Speed for movement
-var movement_speed = 300  # Pixels per second
+var movement_speed = 500  # Pixels per second
 
 # States
 enum State {

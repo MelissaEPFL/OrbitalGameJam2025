@@ -6,6 +6,8 @@ var nbr_ingr:int = 4
 var ingredient_states:Array = ["empty", "empty","empty","empty"]
 var ingredients:Array = []
 
+@onready var yummy:AnimatedSprite2D = get_node("YummyAnim")
+
 func _ready():
 	
 	#Get children ingredients
@@ -14,6 +16,9 @@ func _ready():
 	var ingr3 = get_node("ingredient3")
 	var ingr4 = get_node("ingredient4")
 	ingredients = [ingr1,ingr2,ingr3,ingr4]	
+	
+	#Success feedback
+	yummy.play("hidden")
 	
 	# Initialize empty ingredients
 	for i in range(nbr_ingr):
@@ -37,4 +42,9 @@ func reset_grid(target:int):
 	for i in range(nbr_ingr):
 		ingredients[i].play("empty")
 		ingredient_states[i] = "empty"
+		
+		#play success animation
+		yummy.play("boom")
+
+		
 		

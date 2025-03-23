@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dupgtndhtv0uw"]
+[gd_scene load_steps=38 format=3 uid="uid://dupgtndhtv0uw"]
 
 [ext_resource type="Script" uid="uid://c3ysm3n3etekc" path="res://GameStateManagement.gd" id="1_272bh"]
 [ext_resource type="Texture2D" uid="uid://d4fp16xf8tfwv" path="res://assets/nuclear_plant_control_pannel.jpg" id="2_5vw27"]
@@ -9,9 +9,71 @@
 [ext_resource type="PackedScene" uid="uid://d14hw6ksoqh0n" path="res://ingredient.tscn" id="3_ycdy4"]
 [ext_resource type="Script" uid="uid://bt3h3pymd07gw" path="res://martin.gd" id="4_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cjjhqpe5jdkf8" path="res://assets/conveyor_belt_anim,.png" id="5_efxa6"]
+[ext_resource type="Texture2D" uid="uid://btege1aabypb5" path="res://assets/Yummy.png" id="5_ycdy4"]
 [ext_resource type="Script" uid="uid://bcqg1gnybc3bt" path="res://conveyor_belt.gd" id="6_dg77c"]
 [ext_resource type="PackedScene" uid="uid://bcs8y5ylt07we" path="res://chaudron.tscn" id="7_ycdy4"]
 [ext_resource type="PackedScene" path="res://incantationDisplay.tscn" id="8_5vw27"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
+atlas = ExtResource("3_kek77")
+region = Rect2(3762, 2002, 1254, 1001)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vivmo"]
+atlas = ExtResource("5_ycdy4")
+region = Rect2(0, 0, 550, 651)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cqfq"]
+atlas = ExtResource("5_ycdy4")
+region = Rect2(550, 0, 550, 651)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaehf"]
+atlas = ExtResource("5_ycdy4")
+region = Rect2(1100, 0, 550, 651)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_074og"]
+atlas = ExtResource("5_ycdy4")
+region = Rect2(1650, 0, 550, 651)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cegan"]
+atlas = ExtResource("5_ycdy4")
+region = Rect2(2200, 0, 550, 651)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1u8w0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w48qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vivmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cqfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaehf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_074og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cegan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w48qg")
+}],
+"loop": false,
+"name": &"boom",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w48qg")
+}],
+"loop": false,
+"name": &"hidden",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5ude"]
 atlas = ExtResource("3_kek77")
@@ -203,6 +265,12 @@ animation = &"empty"
 position = Vector2(358, 74.1946)
 scale = Vector2(0.539946, 0.539946)
 animation = &"empty"
+
+[node name="YummyAnim" type="AnimatedSprite2D" parent="GameManager/FinishedIngredients"]
+position = Vector2(193, 66)
+scale = Vector2(0.707792, 0.707792)
+sprite_frames = SubResource("SpriteFrames_1u8w0")
+animation = &"boom"
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -2

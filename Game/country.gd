@@ -33,6 +33,8 @@ const CITY_FRAMES: int = 3
 var all_recipes: Array[int]
 var recipe: Array[int]
 
+var damage_country_next_time = false
+
 var ID: String
 
 func _ready():
@@ -73,7 +75,7 @@ func _process(delta: Variant):
 		
 		country_health = country_health + health_step
 		# frame 1-8, frame 1 is unhealthy, frame 8 is healthy
-		#_animation_healthbar.frame = round(country_health/health_step)
+		_animation_healthbar.frame = round(country_health/health_step)
 		#print('update country health!')
 		
 		# update city sprite depending on health and 3 frames of city health
@@ -81,8 +83,11 @@ func _process(delta: Variant):
 		# frame 1: building
 		# frame 2: ok
 		# change 3
-		_animation_city.frame = roundi(fmod(country_health, maximum_country_health) / (maximum_country_health / CITY_FRAMES))
-		#print(_animation_city.frame, '||||',country_health, '||||', maximum_country_health, '|||', maximum_country_health / 3 * 2)
+		_animation_city.frame = roundi(
+			fmod(country_health, maximum_country_health) / 
+			(maximum_country_health / CITY_FRAMES)
+		) if country_health < maximum_country_health else 2
+		#print(ID, ': ', _animation_city.frame, '||||',country_health, '||||', maximum_country_health)
 	
 	#print(_animation_city.frame)
 	
@@ -93,7 +98,9 @@ func _process(delta: Variant):
 		
 	# REMOVE for demo purpose, play attack animation on city
 	#if time_country > 5 && debug_play_one_attack_example:
-	#	attack_city(time_country)
+	if damage_country_next_time:
+		damage_country_next_time = false
+		attack_city(time_country)
 		
 func attack_city(now: float):
 	debug_play_one_attack_example = false
@@ -119,3 +126,8 @@ func _on_game_manager_recipe_for_target(
 		t3_i1, t3_i2, t3_i3,
 	]
 	
+
+func _on_game_manager_successful_missile_launch(target: int) -> void:
+	if target == ID.to_int():
+		damage_country_next_time = true
+		print('country ', ID, ' was hit')

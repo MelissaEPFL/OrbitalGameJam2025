@@ -92,4 +92,4 @@ animations = [{
 
 [node name="ingredient" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_762re")
-animation = &"empty"
+animation = &"sprite_2"

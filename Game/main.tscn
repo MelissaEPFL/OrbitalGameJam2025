@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cjjhqpe5jdkf8" path="res://assets/conveyor_belt_anim,.png" id="5_efxa6"]
 [ext_resource type="Script" uid="uid://bcqg1gnybc3bt" path="res://conveyor_belt.gd" id="6_dg77c"]
 [ext_resource type="PackedScene" uid="uid://bcs8y5ylt07we" path="res://chaudron.tscn" id="7_ycdy4"]
-[ext_resource type="PackedScene" uid="uid://cnssvg84henkc" path="res://incantationDisplay.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" path="res://incantationDisplay.tscn" id="8_5vw27"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5ude"]
 atlas = ExtResource("3_kek77")
@@ -186,12 +186,23 @@ offset_bottom = 242.0
 script = ExtResource("2_dg77c")
 
 [node name="ingredient1" parent="GameManager/FinishedIngredients" instance=ExtResource("3_ycdy4")]
+position = Vector2(41.375, 74.1946)
+scale = Vector2(0.539946, 0.539946)
 
 [node name="ingredient2" parent="GameManager/FinishedIngredients" instance=ExtResource("3_ycdy4")]
+position = Vector2(147, 74.1946)
+scale = Vector2(0.539946, 0.539946)
+animation = &"empty"
 
 [node name="ingredient3" parent="GameManager/FinishedIngredients" instance=ExtResource("3_ycdy4")]
+position = Vector2(252.375, 74.1946)
+scale = Vector2(0.539946, 0.539946)
+animation = &"empty"
 
 [node name="ingredient4" parent="GameManager/FinishedIngredients" instance=ExtResource("3_ycdy4")]
+position = Vector2(358, 74.1946)
+scale = Vector2(0.539946, 0.539946)
+animation = &"empty"
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -2

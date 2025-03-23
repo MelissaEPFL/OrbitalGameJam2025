@@ -11,6 +11,8 @@ signal associateRecipeElement(incantation_input_string: String, sprite_frame: in
 
 signal incantationCharacterStream(char: String)
 
+signal playChord
+signal playFailIncantation
 signal emptyIncantation
 
 # recipe for target 1, recipe for target 2...
@@ -75,6 +77,7 @@ func receiveInput(receivedInput : IncantationInputs):
 			ingredients_in_pot.append(available_incantations[i])
 			current_incantation = []
 			incantationCharacterStream.emit("SUCCESS")
+			playChord.emit()
 			successfulIncantation.emit(available_incantations[i].incantation_string,available_incantations[i].sprite_frame)
 			success_in_pattern = true
 	
@@ -83,6 +86,7 @@ func receiveInput(receivedInput : IncantationInputs):
 	print(success_in_pattern)
 	if current_incantation.size() >= MAX_INCANTATION_SIZE and !success_in_pattern:
 		incantationCharacterStream.emit("FAILURE")
+		playFailIncantation.emit()
 		current_incantation = []
 
 func deleteInputs():

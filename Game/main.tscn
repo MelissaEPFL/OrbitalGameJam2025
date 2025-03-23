@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dupgtndhtv0uw"]
+[gd_scene load_steps=45 format=3 uid="uid://dupgtndhtv0uw"]
 
 [ext_resource type="Script" uid="uid://c3ysm3n3etekc" path="res://GameStateManagement.gd" id="1_272bh"]
 [ext_resource type="Texture2D" uid="uid://d4fp16xf8tfwv" path="res://assets/nuclear_plant_control_pannel.jpg" id="2_5vw27"]
@@ -12,8 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://btege1aabypb5" path="res://assets/Yummy.png" id="5_ycdy4"]
 [ext_resource type="Script" uid="uid://bcqg1gnybc3bt" path="res://conveyor_belt.gd" id="6_dg77c"]
 [ext_resource type="PackedScene" uid="uid://bcs8y5ylt07we" path="res://chaudron.tscn" id="7_ycdy4"]
-[ext_resource type="PackedScene" path="res://incantationDisplay.tscn" id="8_5vw27"]
-[ext_resource type="Script" uid="uid://c0dbghdfc3giq" path="res://condition_mort.gd" id="8_w48qg"]
+[ext_resource type="PackedScene" uid="uid://cnssvg84henkc" path="res://incantationDisplay.tscn" id="8_5vw27"]
+[ext_resource type="Script" path="res://condition_mort.gd" id="8_w48qg"]
+[ext_resource type="Script" path="res://MusicManagement.gd" id="14_vivmo"]
+[ext_resource type="AudioStream" uid="uid://c0n2poupi2xhh" path="res://music/Orbital2025 Project.wav" id="15_2cqfq"]
+[ext_resource type="Script" path="res://successful_incantation_player.gd" id="16_2cqfq"]
+[ext_resource type="Script" path="res://fail_incantation_player.gd" id="17_yaehf"]
+[ext_resource type="Script" path="res://successful_launch.gd" id="18_074og"]
+[ext_resource type="Script" path="res://failed_launch.gd" id="19_cegan"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
 atlas = ExtResource("3_kek77")
@@ -349,10 +355,32 @@ sprite_frames = SubResource("SpriteFrames_n5ude")
 animation = &"idle"
 script = ExtResource("6_dg77c")
 
+[node name="Node" type="Node" parent="."]
+script = ExtResource("14_vivmo")
+
+[node name="MainMusicPlayer" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("15_2cqfq")
+
+[node name="SuccessfulIncantationPlayer" type="AudioStreamPlayer2D" parent="Node"]
+volume_db = -9.0
+script = ExtResource("16_2cqfq")
+
+[node name="FailIncantationPlayer" type="AudioStreamPlayer2D" parent="Node"]
+script = ExtResource("17_yaehf")
+
+[node name="SuccessfulLaunch" type="AudioStreamPlayer2D" parent="Node"]
+script = ExtResource("18_074og")
+
+[node name="FailedLaunch" type="AudioStreamPlayer2D" parent="Node"]
+script = ExtResource("19_cegan")
+
 [connection signal="associateRecipeElement" from="GameManager" to="Menu gauche/ControlMenugauche" method="interecpt_setup"]
 [connection signal="emptyIncantation" from="GameManager" to="GameManager/FinishedIngredients" method="reset_grid"]
 [connection signal="failedMissileLaunch" from="GameManager" to="Menu central/Martin" method="_on_failure"]
+[connection signal="failedMissileLaunch" from="GameManager" to="Node/FailedLaunch" method="play_sound"]
 [connection signal="incantationCharacterStream" from="GameManager" to="Menu central/IncantationPanel" method="treatSignal"]
+[connection signal="playChord" from="GameManager" to="Node/SuccessfulIncantationPlayer" method="play_chord"]
+[connection signal="playFailIncantation" from="GameManager" to="Node/FailIncantationPlayer" method="play_sound"]
 [connection signal="recipeForTarget" from="GameManager" to="Menu droite/country" method="_on_game_manager_recipe_for_target"]
 [connection signal="recipeForTarget" from="GameManager" to="Menu droite/country2_with_offset" method="_on_game_manager_recipe_for_target"]
 [connection signal="recipeForTarget" from="GameManager" to="Menu droite/country3_with_offset" method="_on_game_manager_recipe_for_target"]
@@ -364,6 +392,7 @@ script = ExtResource("6_dg77c")
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu droite/country3_with_offset" method="_on_game_manager_successful_missile_launch"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Chaudron" method="_on_recipe_change"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Martin" method="_on_success"]
+[connection signal="successfulMissileLaunch" from="GameManager" to="Node/SuccessfulLaunch" method="play_sound"]
 [connection signal="youLose" from="Menu droite" to="GameManager" method="change_to_deat_screen"]
 [connection signal="timeout" from="Menu droite/Timer" to="Menu droite" method="_progressive_difficulty"]
 [connection signal="chaudron_arrived" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]

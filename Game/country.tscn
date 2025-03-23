@@ -1,7 +1,7 @@
 [gd_scene load_steps=40 format=3 uid="uid://b4sy00ot8bfvn"]
 
 [ext_resource type="Texture2D" uid="uid://bjaia504ofiw5" path="res://assets/ingredient_01.jpeg" id="1_1yy88"]
-[ext_resource type="Script" path="res://country.gd" id="1_rk51i"]
+[ext_resource type="Script" uid="uid://2ot031kd13ag" path="res://country.gd" id="1_rk51i"]
 [ext_resource type="Texture2D" uid="uid://cebruahwu2tjh" path="res://assets/flag_sprites.png" id="3_05fxv"]
 [ext_resource type="Texture2D" uid="uid://brp03x0rd4o5x" path="res://assets/Ville.png" id="3_nsy2n"]
 [ext_resource type="Texture2D" uid="uid://dkcmxnxogcg3y" path="res://assets/healthbar_sprites.png" id="3_wvw0n"]

@@ -11,6 +11,9 @@ signal associateRecipeElement(incantation_input_string: String, sprite_frame: in
 
 signal incantationCharacterStream(char: String)
 
+# recipe for target 1, recipe for target 2...
+signal recipeForTarget(recipes: Array[Recipe])
+
 class IngredientIncantation:
 	var ingredientName: String
 	var inputs : Array[IncantationInputs]
@@ -107,7 +110,6 @@ func _ready() -> void:
 	)
 	my_array.append(uranium)
 
-
 	var banana : IngredientIncantation = IngredientIncantation.new(
 		[
 			IncantationInputs.UP,
@@ -121,7 +123,6 @@ func _ready() -> void:
 		"↑→←↑↓"
 	)
 	my_array.append(banana)
-
 
 	var amethyst : IngredientIncantation = IngredientIncantation.new(
 		[
@@ -137,67 +138,80 @@ func _ready() -> void:
 	)
 	my_array.append(amethyst)
 
-
 	#TODO put different incantation fro blood orange and diamond 
 	var blood : IngredientIncantation = IngredientIncantation.new(
 		[
-			IncantationInputs.UP,
-			IncantationInputs.RIGHT,
-			IncantationInputs.LEFT,
-			IncantationInputs.UP,
+			IncantationInputs.DOWN,
+			IncantationInputs.DOWN,
+			IncantationInputs.DOWN,
+			IncantationInputs.DOWN,
 			IncantationInputs.DOWN
 		],
 		"blood",
 		3,
-		"↑→←↑↓"
+		"↓↓↓↓↓"
 	)
 
 	var orange : IngredientIncantation = IngredientIncantation.new(
 		[
 			IncantationInputs.UP,
 			IncantationInputs.RIGHT,
+			IncantationInputs.DOWN,
 			IncantationInputs.LEFT,
 			IncantationInputs.UP,
-			IncantationInputs.DOWN
 		],
 		"orange",
 		4,
-		"↑→←↑↓"
+		"↑→↓←↑"
 	)
 
 	var diamond : IngredientIncantation = IngredientIncantation.new(
 		[
 			IncantationInputs.UP,
-			IncantationInputs.RIGHT,
 			IncantationInputs.LEFT,
+			IncantationInputs.DOWN,
+			IncantationInputs.RIGHT,
 			IncantationInputs.UP,
-			IncantationInputs.DOWN
 		],
 		"diamond",
 		5,
-		"↑→←↑↓"
+		"↑←↓→↑"
 	)
-	var some_recipe : Recipe = Recipe.new([uranium, banana, amethyst])
-	#var some_recipe : Recipe = Recipe.new([uranium, banana, amethyst, blood, orange, diamond ])
+	
 	for element in my_array: #TODO iterate over the things in recipe
 		associateRecipeElement.emit(element.incantation_string, element.sprite_frame)
 
-
-	
-	var target: Target = Target.new(some_recipe)
-	# Assign a value to the dictionary
-	valid_targets = [1,2,3] # Setting some dummy targets
-	targets[1] = target
-	targets[2] = target
-	targets[3] = target
-	
-	
 	# Example of incantations
 	available_incantations.append(uranium)
 	available_incantations.append(banana)
-	available_incantations.append(amethyst)
+	available_incantations.append(amethyst)	
 	
-	
+	#var target: Target = Target.new(some_recipe)
+	# Assign a value to the dictionary
+	valid_targets = [1,2,3] # Setting some dummy targets
+	var target_1_recipe = Recipe.new([uranium, banana, amethyst])
+	targets[1] = Target.new(target_1_recipe)
+	var target_2_recipe = Recipe.new([orange, banana, diamond])
+	targets[2] = Target.new(target_2_recipe)
+	var target_3_recipe = Recipe.new([blood, uranium, amethyst])
+	targets[3] = Target.new(target_3_recipe)
+	# fails
+#	recipeForTarget.emit([
+#		target_1_recipe,
+#		target_2_recipe,
+#		target_3_recipe,
+#	])
+	#1 uranium
+	#2 banana
+	#3 amethyst
+	#4 blood
+	#5 orange
+	#6 diamond
+	recipeForTarget.emit(
+		1,2,3,
+		5,2,6,
+		4,1,3,
+	)
 	
 func user_pressed_enter_on_current_pot():
 	var is_valid_ingredients_in_pot: bool = targets[current_target].validate_ingredients(ingredients_in_pot)

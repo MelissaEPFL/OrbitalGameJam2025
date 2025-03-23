@@ -22,7 +22,7 @@ func _process(delta):
 			play_animation_once("failure")
 		
 				
-func _on_success():
+func _on_success(no_one_cares:int):
 	current_state = State.PARTYING
 		
 func _on_failure():

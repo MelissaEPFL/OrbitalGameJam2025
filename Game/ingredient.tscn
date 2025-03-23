@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://d14hw6ksoqh0n"]
+
+[ext_resource type="Texture2D" uid="uid://cafm4fkdvkbji" path="res://assets/les 6 éléments.png" id="1_11e83"]
+[ext_resource type="Texture2D" uid="uid://mafoh57dq207" path="res://assets/Perso-Gome-Jum.png" id="1_762re"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngxxb"]
+atlas = ExtResource("1_762re")
+region = Rect2(1114, 0, 557, 801)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_762re"]
+atlas = ExtResource("1_11e83")
+region = Rect2(0, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8g6t"]
+atlas = ExtResource("1_11e83")
+region = Rect2(324, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veaxr"]
+atlas = ExtResource("1_11e83")
+region = Rect2(648, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8app"]
+atlas = ExtResource("1_11e83")
+region = Rect2(972, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luq5u"]
+atlas = ExtResource("1_11e83")
+region = Rect2(1296, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21dxx"]
+atlas = ExtResource("1_11e83")
+region = Rect2(1620, 0, 324, 337)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ngxxb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngxxb")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_762re")
+}],
+"loop": true,
+"name": &"sprite_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8g6t")
+}],
+"loop": true,
+"name": &"sprite_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veaxr")
+}],
+"loop": true,
+"name": &"sprite_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8app")
+}],
+"loop": true,
+"name": &"sprite_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luq5u")
+}],
+"loop": true,
+"name": &"sprite_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21dxx")
+}],
+"loop": true,
+"name": &"sprite_5",
+"speed": 5.0
+}]
+
+[node name="Ingredient" type="Node2D"]
+
+[node name="ingredient_sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ngxxb")
+animation = &"empty"

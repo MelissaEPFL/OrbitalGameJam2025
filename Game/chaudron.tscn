@@ -1,17 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcs8y5ylt07we"]
+[gd_scene load_steps=7 format=3 uid="uid://bcs8y5ylt07we"]
 
 [ext_resource type="Script" uid="uid://cau6b0cunnmr4" path="res://chaudron.gd" id="1_ugpeo"]
 [ext_resource type="Texture2D" uid="uid://mafoh57dq207" path="res://assets/Perso-Gome-Jum.png" id="2_g8bqg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tirl1"]
 atlas = ExtResource("2_g8bqg")
-region = Rect2(0, 813, 557, 798)
+region = Rect2(0, 15, 557, 798)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tirl1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tirl1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8bqg"]
+atlas = ExtResource("2_g8bqg")
+region = Rect2(557, 15, 557, 798)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e00ng"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8bqg")
 }],
 "loop": true,
 "name": &"default",
@@ -28,7 +43,20 @@ position = Vector2(-426.25, 330.457)
 scale = Vector2(0.582298, 0.582298)
 sprite_frames = SubResource("SpriteFrames_tirl1")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Groupe_chaudrons"]
+z_index = -1
+position = Vector2(-425, 331)
+scale = Vector2(0.582298, 0.582298)
+sprite_frames = SubResource("SpriteFrames_e00ng")
+
 [node name="Chaudrons2" type="AnimatedSprite2D" parent="Groupe_chaudrons"]
+z_index = 1
 position = Vector2(233, 330.457)
 scale = Vector2(0.582298, 0.582298)
 sprite_frames = SubResource("SpriteFrames_tirl1")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Groupe_chaudrons"]
+z_index = -1
+position = Vector2(234, 331)
+scale = Vector2(0.582298, 0.582298)
+sprite_frames = SubResource("SpriteFrames_e00ng")

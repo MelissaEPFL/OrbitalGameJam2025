@@ -7,10 +7,10 @@ signal oneCityBuilt
 @onready var country2 = get_node("country2_with_offset")
 @onready var country3 = get_node("country3_with_offset")
 
-var health_step_increase_per_minute = 20
-var health_step_start = 20
+var health_step_increase_per_minute = 5
+var health_step_start = 10
 
-const ALIGNER = 5
+const ALIGNER = 1
 	
 func _ready():
 	#initial health step

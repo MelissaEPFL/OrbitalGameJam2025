@@ -74,12 +74,14 @@ func _process(delta: Variant):
 		last_time_increment = last_time_increment + time_step
 		print("oigejoiejrg")
 		print(country_health)
+		print(maximum_country_health)
 		
 		country_health = country_health + health_step
 		if country_health > maximum_country_health:
 			country_health = maximum_country_health
 		# frame 1-8, frame 1 is unhealthy, frame 8 is healthy
-		_animation_healthbar.frame = round(country_health/health_step)
+		_animation_healthbar.frame = roundi(float(country_health)/float(maximum_country_health)*10)
+		print(_animation_healthbar.frame)
 		#print('update country health!')
 		
 		# update city sprite depending on health and 3 frames of city health

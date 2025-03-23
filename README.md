@@ -1,4 +1,4 @@
-# A Drink to Die for
+# Cocktails of Mass Destruction
 
 ## Authors
 

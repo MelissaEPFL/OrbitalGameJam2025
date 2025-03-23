@@ -289,3 +289,7 @@ func _input(event: InputEvent) -> void:
 			assign_target(8)
 		if event.keycode == KEY_9:
 			assign_target(9)
+
+
+func change_to_deat_screen():
+	get_tree().change_scene_to_file("res://death_screen.tscn")

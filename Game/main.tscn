@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dupgtndhtv0uw"]
+[gd_scene load_steps=39 format=3 uid="uid://dupgtndhtv0uw"]
 
 [ext_resource type="Script" uid="uid://c3ysm3n3etekc" path="res://GameStateManagement.gd" id="1_272bh"]
 [ext_resource type="Texture2D" uid="uid://d4fp16xf8tfwv" path="res://assets/nuclear_plant_control_pannel.jpg" id="2_5vw27"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bcqg1gnybc3bt" path="res://conveyor_belt.gd" id="6_dg77c"]
 [ext_resource type="PackedScene" uid="uid://bcs8y5ylt07we" path="res://chaudron.tscn" id="7_ycdy4"]
 [ext_resource type="PackedScene" path="res://incantationDisplay.tscn" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://c0dbghdfc3giq" path="res://condition_mort.gd" id="8_w48qg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
 atlas = ExtResource("3_kek77")
@@ -299,6 +300,7 @@ offset_left = 810.0
 offset_top = -3.05176e-05
 offset_right = 1150.0
 offset_bottom = 648.0
+script = ExtResource("8_w48qg")
 
 [node name="country" parent="Menu droite" instance=ExtResource("3_5vw27")]
 position = Vector2(32, -39)
@@ -358,5 +360,6 @@ script = ExtResource("6_dg77c")
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu droite/country3_with_offset" method="_on_game_manager_successful_missile_launch"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Chaudron" method="_on_recipe_change"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Martin" method="_on_success"]
+[connection signal="youLose" from="Menu droite" to="GameManager" method="change_to_deat_screen"]
 [connection signal="chaudron_arrived" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]
 [connection signal="chaudron_moving" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]

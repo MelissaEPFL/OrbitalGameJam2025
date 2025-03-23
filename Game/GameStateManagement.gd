@@ -211,6 +211,8 @@ func _ready() -> void:
 	targets[2] = Target.new(target_2_recipe)
 	var target_3_recipe = Recipe.new([blood, uranium, amethyst])
 	targets[3] = Target.new(target_3_recipe)
+	
+	assign_target(1)
 	# fails
 #	recipeForTarget.emit([
 #		target_1_recipe,
@@ -249,7 +251,10 @@ func assign_target(new_target : int) -> bool:
 		return true
 	else:
 		return false
+func _process(delta: float) -> void:
+	assign_target(current_target)
 	
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
 		if event.keycode == KEY_W or event.keycode == KEY_UP:

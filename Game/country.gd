@@ -81,7 +81,10 @@ func _process(delta: Variant):
 	if is_targeted:
 		_color_rect.modulate = Color.INDIAN_RED
 	else:
-		_color_rect.modulate = Color.WHITE
+		_color_rect.modulate = Color.DARK_GRAY
+	
+	if country_health < 0:
+		country_health = 0
 	
 	time_country = time_country + delta
 	#print(time_country)

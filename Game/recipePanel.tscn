@@ -105,5 +105,5 @@ vertical_alignment = 1
 position = Vector2(263, 38)
 scale = Vector2(0.467593, 0.467593)
 sprite_frames = SubResource("SpriteFrames_cbd0w")
-frame_progress = 0.600589
-speed_scale = 0.5
+frame_progress = 0.329842
+speed_scale = 0.2

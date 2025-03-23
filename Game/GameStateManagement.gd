@@ -151,6 +151,7 @@ func _ready() -> void:
 		3,
 		"↓↓↓↓↓"
 	)
+	my_array.append(blood)
 
 	var orange : IngredientIncantation = IngredientIncantation.new(
 		[
@@ -164,6 +165,7 @@ func _ready() -> void:
 		4,
 		"↑→↓←↑"
 	)
+	my_array.append(orange)
 
 	var diamond : IngredientIncantation = IngredientIncantation.new(
 		[
@@ -177,6 +179,7 @@ func _ready() -> void:
 		5,
 		"↑←↓→↑"
 	)
+	my_array.append(diamond)
 	
 	for element in my_array: #TODO iterate over the things in recipe
 		associateRecipeElement.emit(element.incantation_string, element.sprite_frame)

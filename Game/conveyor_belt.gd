@@ -19,7 +19,7 @@ func _process(delta):
 		State.IDLE:
 			play("idle")
 	
-func _conveyor_on_off():
+func _conveyor_on_off(target:int):
 	if current_state == State.IDLE:
 		current_state = State.MOVING
 	elif current_state == State.MOVING:

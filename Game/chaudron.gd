@@ -6,7 +6,7 @@ signal chaudron_arrived
 
 # Variables for positions
 var left_position = Vector2(-90, 27)  # Outside the left screen
-var right_position = Vector2(569, 73)  # Outside the right screen
+var right_position = Vector2(569, 27)  # Outside the right screen
 
 # Speed for movement
 var movement_speed = 300  # Pixels per second
@@ -37,7 +37,7 @@ func move_to_position(target_position, delta):
 		current_state = State.IDLE
 		emit_signal("chaudron_arrived")
 
-func _on_recipe_change():
+func _on_recipe_change(target:int):
 	#sprite appear and start moving to the center
 	current_state = State.MOVING
 	emit_signal("chaudron_moving")

@@ -287,5 +287,6 @@ script = ExtResource("6_dg77c")
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu droite/country2_with_offset" method="_on_game_manager_successful_missile_launch"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu droite/country3_with_offset" method="_on_game_manager_successful_missile_launch"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Chaudron" method="_on_recipe_change"]
+[connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Martin" method="_on_success"]
 [connection signal="chaudron_arrived" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]
 [connection signal="chaudron_moving" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]

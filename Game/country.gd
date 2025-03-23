@@ -74,6 +74,8 @@ func _process(delta: Variant):
 		last_time_increment = last_time_increment + time_step
 		
 		country_health = country_health + health_step
+		if country_health > maximum_country_health:
+			country_health = maximum_country_health
 		# frame 1-8, frame 1 is unhealthy, frame 8 is healthy
 		_animation_healthbar.frame = round(country_health/health_step)
 		#print('update country health!')

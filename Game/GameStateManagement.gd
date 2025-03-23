@@ -207,16 +207,16 @@ func _ready() -> void:
 #		target_2_recipe,
 #		target_3_recipe,
 #	])
-	#1 uranium
-	#2 banana
-	#3 amethyst
-	#4 blood
-	#5 orange
-	#6 diamond
+	#0 uranium
+	#1 banana
+	#2 amethyst
+	#3 blood
+	#4 orange
+	#5 diamond
 	recipeForTarget.emit(
-		1,2,3,
-		5,2,6,
-		4,1,3,
+		0,1,2,
+		4,1,5,
+		3,0,2,
 	)
 	
 func user_pressed_enter_on_current_pot():

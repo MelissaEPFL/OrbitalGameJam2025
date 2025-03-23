@@ -31,7 +31,7 @@ region = Rect2(1296, 0, 324, 337)
 atlas = ExtResource("1_11e83")
 region = Rect2(1620, 0, 324, 337)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ngxxb"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_762re"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -90,8 +90,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Ingredient" type="Node2D"]
-
-[node name="ingredient_sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_ngxxb")
+[node name="ingredient" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_762re")
 animation = &"empty"

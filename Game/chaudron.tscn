@@ -39,6 +39,7 @@ script = ExtResource("1_ugpeo")
 [node name="Groupe_chaudrons" type="Node2D" parent="."]
 
 [node name="Chaudrons" type="AnimatedSprite2D" parent="Groupe_chaudrons"]
+z_index = 1
 position = Vector2(-426.25, 330.457)
 scale = Vector2(0.582298, 0.582298)
 sprite_frames = SubResource("SpriteFrames_tirl1")

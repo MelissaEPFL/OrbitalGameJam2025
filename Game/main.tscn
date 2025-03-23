@@ -1,15 +1,17 @@
-[gd_scene load_steps=28 format=3 uid="uid://dupgtndhtv0uw"]
+[gd_scene load_steps=30 format=3 uid="uid://dupgtndhtv0uw"]
 
 [ext_resource type="Script" uid="uid://c3ysm3n3etekc" path="res://GameStateManagement.gd" id="1_272bh"]
 [ext_resource type="Texture2D" uid="uid://d4fp16xf8tfwv" path="res://assets/nuclear_plant_control_pannel.jpg" id="2_5vw27"]
+[ext_resource type="Script" uid="uid://decc4h1hf054w" path="res://grid_container.gd" id="2_dg77c"]
 [ext_resource type="PackedScene" uid="uid://l7uh2auesjry" path="res://control_menugauche.tscn" id="3_4c57u"]
 [ext_resource type="PackedScene" uid="uid://b4sy00ot8bfvn" path="res://country.tscn" id="3_5vw27"]
 [ext_resource type="Texture2D" uid="uid://mafoh57dq207" path="res://assets/Perso-Gome-Jum.png" id="3_kek77"]
+[ext_resource type="PackedScene" uid="uid://d14hw6ksoqh0n" path="res://ingredient.tscn" id="3_ycdy4"]
 [ext_resource type="Script" uid="uid://bt3h3pymd07gw" path="res://martin.gd" id="4_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cjjhqpe5jdkf8" path="res://assets/conveyor_belt_anim,.png" id="5_efxa6"]
 [ext_resource type="Script" uid="uid://bcqg1gnybc3bt" path="res://conveyor_belt.gd" id="6_dg77c"]
 [ext_resource type="PackedScene" uid="uid://bcs8y5ylt07we" path="res://chaudron.tscn" id="7_ycdy4"]
-[ext_resource type="PackedScene" uid="uid://cnssvg84henkc" path="res://incantationDisplay.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" path="res://incantationDisplay.tscn" id="8_5vw27"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5ude"]
 atlas = ExtResource("3_kek77")
@@ -176,7 +178,21 @@ position = Vector2(577, 315)
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_272bh")
 
+[node name="FinishedIngredients" type="GridContainer" parent="GameManager"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_dg77c")
+
+[node name="ingredient1" parent="GameManager/FinishedIngredients" instance=ExtResource("3_ycdy4")]
+
+[node name="ingredient2" parent="GameManager/FinishedIngredients" instance=ExtResource("3_ycdy4")]
+
+[node name="ingredient3" parent="GameManager/FinishedIngredients" instance=ExtResource("3_ycdy4")]
+
+[node name="ingredient4" parent="GameManager/FinishedIngredients" instance=ExtResource("3_ycdy4")]
+
 [node name="Background" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(574, 325)
 scale = Vector2(0.321635, 0.321635)
 texture = ExtResource("2_5vw27")
@@ -212,10 +228,14 @@ position = Vector2(0, 200)
 position = Vector2(0, 400)
 
 [node name="Menu central" type="Panel" parent="."]
+z_index = -1
 layout_mode = 0
 offset_left = 350.0
 offset_right = 798.0
 offset_bottom = 648.0
+
+[node name="Chaudron" parent="Menu central" instance=ExtResource("7_ycdy4")]
+position = Vector2(-90.115, 27)
 
 [node name="Martin" type="AnimatedSprite2D" parent="Menu central"]
 position = Vector2(151, 391.153)
@@ -223,10 +243,6 @@ scale = Vector2(0.514812, 0.514811)
 sprite_frames = SubResource("SpriteFrames_os5c7")
 animation = &"failure"
 script = ExtResource("4_4c57u")
-
-[node name="Chaudron" parent="Menu central" instance=ExtResource("7_ycdy4")]
-z_index = 1
-position = Vector2(-90.115, 27)
 
 [node name="IncantationPanel" parent="Menu central" instance=ExtResource("8_5vw27")]
 z_index = 1
@@ -247,6 +263,8 @@ script = ExtResource("6_dg77c")
 
 [connection signal="failedMissileLaunch" from="GameManager" to="Menu central/Martin" method="_on_failure"]
 [connection signal="incantationCharacterStream" from="GameManager" to="Menu central/IncantationPanel" method="treatSignal"]
+[connection signal="successfulIncantation" from="GameManager" to="GameManager/FinishedIngredients" method="update_ingredient"]
+[connection signal="successfulMissileLaunch" from="GameManager" to="GameManager/FinishedIngredients" method="reset_grid"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu gauche/ControlMenugauche" method="foo"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Chaudron" method="_on_recipe_change"]
 [connection signal="chaudron_arrived" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]

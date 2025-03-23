@@ -21,6 +21,11 @@ var country_health: int = initial_health
 
 @onready var _animation_healthbar = $Healthbar
 @onready var _animation_explosion = $Explosion
+
+@onready var _animation_ingredient01 = $Ingredient01
+@onready var _animation_ingredient02 = $Ingredient02
+@onready var _animation_ingredient03 = $Ingredient03
+
 @onready var _animation_flag = $Flag
 @onready var _animation_city = $City
 const CITY_FRAMES: int = 3
@@ -40,16 +45,24 @@ func _ready():
 	_animation_explosion.visible = false
 	_animation_flag.play()
 	_animation_city.frame = 0
-	print('settt', all_recipes)
 	if ID == '1':
 		print('set target 1 recipe: ', all_recipes[0], all_recipes[1], all_recipes[2])
 		recipe = [all_recipes[0], all_recipes[1], all_recipes[2]]
+		_animation_ingredient01.frame = all_recipes[0]
+		_animation_ingredient02.frame = all_recipes[1]
+		_animation_ingredient03.frame = all_recipes[2]
 	elif ID == '2':
 		print('set target 2 recipe: ', all_recipes[3], all_recipes[4], all_recipes[5])
 		recipe = [all_recipes[3], all_recipes[4], all_recipes[5]]
+		_animation_ingredient01.frame = all_recipes[3]
+		_animation_ingredient02.frame = all_recipes[4]
+		_animation_ingredient03.frame = all_recipes[5]
 	elif ID == '3':
 		print('set target 3 recipe: ', all_recipes[6], all_recipes[7], all_recipes[8])
 		recipe = [all_recipes[6], all_recipes[7], all_recipes[8]]
+		_animation_ingredient01.frame = all_recipes[6]
+		_animation_ingredient02.frame = all_recipes[7]
+		_animation_ingredient03.frame = all_recipes[8]
 
 func _process(delta: Variant):
 	time_country = time_country + delta

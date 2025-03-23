@@ -1,11 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://b4sy00ot8bfvn"]
+[gd_scene load_steps=47 format=3 uid="uid://b4sy00ot8bfvn"]
 
-[ext_resource type="Texture2D" uid="uid://bjaia504ofiw5" path="res://assets/ingredient_01.jpeg" id="1_1yy88"]
 [ext_resource type="Script" uid="uid://2ot031kd13ag" path="res://country.gd" id="1_rk51i"]
 [ext_resource type="Texture2D" uid="uid://cebruahwu2tjh" path="res://assets/flag_sprites.png" id="3_05fxv"]
 [ext_resource type="Texture2D" uid="uid://brp03x0rd4o5x" path="res://assets/Ville.png" id="3_nsy2n"]
 [ext_resource type="Texture2D" uid="uid://dkcmxnxogcg3y" path="res://assets/healthbar_sprites.png" id="3_wvw0n"]
 [ext_resource type="Texture2D" uid="uid://dk08ascnn7mjv" path="res://assets/Explosion.png" id="6_05fxv"]
+[ext_resource type="Texture2D" uid="uid://cafm4fkdvkbji" path="res://assets/les 6 éléments.png" id="6_nsy2n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rk51i"]
 atlas = ExtResource("3_05fxv")
@@ -242,6 +242,56 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4eu7"]
+atlas = ExtResource("6_nsy2n")
+region = Rect2(0, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwl6t"]
+atlas = ExtResource("6_nsy2n")
+region = Rect2(324, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78avd"]
+atlas = ExtResource("6_nsy2n")
+region = Rect2(648, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eedj"]
+atlas = ExtResource("6_nsy2n")
+region = Rect2(972, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rljy"]
+atlas = ExtResource("6_nsy2n")
+region = Rect2(1296, 0, 324, 337)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7kno"]
+atlas = ExtResource("6_nsy2n")
+region = Rect2(1620, 0, 324, 337)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m32ii"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4eu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwl6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78avd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eedj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rljy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7kno")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="country" type="Node2D"]
 script = ExtResource("1_rk51i")
 
@@ -257,21 +307,6 @@ sprite_frames = SubResource("SpriteFrames_oc2pf")
 frame = 1
 frame_progress = 0.155554
 
-[node name="Ingredient01" type="Sprite2D" parent="."]
-position = Vector2(47, 203.75)
-scale = Vector2(0.414414, 0.407489)
-texture = ExtResource("1_1yy88")
-
-[node name="Ingredient02" type="Sprite2D" parent="."]
-position = Vector2(140.5, 203.25)
-scale = Vector2(0.346847, 0.394273)
-texture = ExtResource("1_1yy88")
-
-[node name="Ingredient03" type="Sprite2D" parent="."]
-position = Vector2(225, 204.75)
-scale = Vector2(0.333333, 0.381057)
-texture = ExtResource("1_1yy88")
-
 [node name="Healthbar" type="AnimatedSprite2D" parent="."]
 position = Vector2(245.75, 75.25)
 scale = Vector2(0.565421, 0.511494)
@@ -282,3 +317,18 @@ position = Vector2(146, 106)
 scale = Vector2(0.211363, 0.286919)
 sprite_frames = SubResource("SpriteFrames_jwml4")
 frame_progress = 0.41607
+
+[node name="Ingredient01" type="AnimatedSprite2D" parent="."]
+position = Vector2(50, 201)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_m32ii")
+
+[node name="Ingredient02" type="AnimatedSprite2D" parent="."]
+position = Vector2(150, 201)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_m32ii")
+
+[node name="Ingredient03" type="AnimatedSprite2D" parent="."]
+position = Vector2(250, 201)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_m32ii")

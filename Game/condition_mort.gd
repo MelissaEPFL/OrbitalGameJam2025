@@ -18,7 +18,7 @@ func _ready():
 
 func _process(delta):
 	
-	if (country1.country_health == 1000) or (country2.country_health == 1000) or (country3.country_health == 1000):
+	if (country1.country_health >= 1000) or (country2.country_health >= 1000) or (country3.country_health >= 1000):
 		youLose.emit()
 	#if (country1.country_health == 1000) and (country2.country_health == 1000) and (country3.country_health == 1000):
 	#	youLose.emit()

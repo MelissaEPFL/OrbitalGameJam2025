@@ -311,6 +311,10 @@ position = Vector2(32, 141)
 [node name="country3_with_offset" parent="Menu droite" instance=ExtResource("3_5vw27")]
 position = Vector2(32, 321)
 
+[node name="Timer" type="Timer" parent="Menu droite"]
+wait_time = 30.0
+autostart = true
+
 [node name="Menu central" type="Panel" parent="."]
 z_index = -1
 layout_mode = 0
@@ -361,5 +365,6 @@ script = ExtResource("6_dg77c")
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Chaudron" method="_on_recipe_change"]
 [connection signal="successfulMissileLaunch" from="GameManager" to="Menu central/Martin" method="_on_success"]
 [connection signal="youLose" from="Menu droite" to="GameManager" method="change_to_deat_screen"]
+[connection signal="timeout" from="Menu droite/Timer" to="Menu droite" method="_progressive_difficulty"]
 [connection signal="chaudron_arrived" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]
 [connection signal="chaudron_moving" from="Menu central/Chaudron" to="Menu central/ConveyorBelt" method="_conveyor_on_off"]

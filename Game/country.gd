@@ -8,7 +8,7 @@ var last_time_increment: int = 0
 
 # country has to build up
 const initial_health: int = 0
-const health_step: int = 100
+var health_step: int = 50
 # TODO tie some game over logic
 const maximum_country_health: int = 1000
 
